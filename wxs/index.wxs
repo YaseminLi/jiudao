@@ -1,0 +1,37 @@
+var date = function (date) {
+  var string = date ? date.slice(0, 4) + '-' + date.slice(4) : '';
+  return string;
+};
+var author = function (array) {
+  var array = array ? array.join('/') : '';
+  return array;
+};
+var content = function (string) {
+  if (!string) {
+    return
+  }
+  var reg = getRegExp("\n", "img");
+
+  return string.replace(reg, '\n&nbsp;&nbsp;&nbsp;&nbsp;');
+}
+var limit = function (array, length) {
+  return array.slice(0, length)
+}
+var typeName = function (type) {
+  var name = null
+  if (type == '200') {
+    name = '音乐'
+  } else if (type == '100') {
+    name = '电影'
+  } else {
+    name = '电影'
+  }
+  return name
+}
+module.exports = {
+  date: date,
+  author: author,
+  content: content,
+  limit: limit,
+  typeName: typeName
+}

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "v-book-like": "/components/book-like/index"
+  },
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "旧岛"
+}

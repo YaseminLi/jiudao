@@ -1,0 +1,177 @@
+.header {
+  padding: 40rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header image {
+  width: 200rpx;
+  height: 300rpx;
+  box-shadow: 2px 2px 3px #e3e3e3;
+}
+
+.header .book-name {
+  margin-top: 20rpx;
+  font-size: 38rpx;
+  color: #2f2f2f;
+  font-weight: 600;
+}
+
+.header .author {
+  font-size: 28rpx;
+ color:#999
+}
+.container {
+  border-top: 20rpx solid #f1f1f1;
+  padding: 30rpx;
+  width: 690rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container .title {
+  font-size: 30rpx;
+  color: #2f2f2f;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+}
+
+ .comments {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.comments v-tag{
+  margin-right: 15rpx;
+  margin-bottom: 10rpx;
+}
+.comments .count {
+  font-size: 20rpx;
+  color: #666;
+  margin-left: 15rpx;}
+/* .comments > v-tag:nth-child(1) view{
+  background: #eefbff;
+} */
+.ex-tag1{
+  background: #eefbff !important;
+}
+.ex-tag2{
+  background: #fffbdd !important;
+}
+.content {
+  display: inline-block;
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  letter-spacing: 3rpx;
+  text-indent:2em
+}
+.description{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 90rpx;
+}
+
+.description .plain {
+  display: inline-block;
+  width: 80rpx;
+  text-align: end;
+}
+.description .message{
+  margin-left: 20rpx;
+  color: #333333;
+}
+.post-container{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 90rpx;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1rpx solid #f1f1f1;
+}
+.post-fake{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 56rpx;
+  width: 410rpx;
+  margin-left: 30rpx;
+  margin-right: 150rpx;
+  border:1rpx solid #333333;
+  border-radius: 28rpx;
+}
+.post-fake image{
+  width: 25rpx;
+  height: 25rpx;
+  margin-left: 30rpx;
+}
+
+.input{
+  font-size: 24rpx;
+  line-height:24rpx;
+  color: #333333;
+  margin-left: 10rpx;
+}
+.button{
+  width: 160rpx;
+  margin-right: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.button > image{
+  height: 30rpx;
+  width: 30rpx;
+}
+.posting-container{
+  position: fixed;
+  bottom: 0;
+  width:100%;
+  background: white;
+  z-index: 100;
+}
+.posting-container .post-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  border-top:1rpx solid #f1f1f1;
+  border-bottom:1rpx solid #f1f1f1;
+}
+.posting-container .post-header text{
+  font-size: 34rpx;
+  margin: 0 30rpx;
+  color: #333333;
+}
+.posting-container .post-header text:first-child{
+  color: #666
+}
+.posting-container .comment-container{
+  width: 100%;
+  margin: 40rpx 30rpx  0 30rpx;
+  display: flex;
+}
+.posting-container .comment-container v-tag{
+  margin-right: 20rpx;
+}
+.posting-container .count {
+  font-size: 20rpx;
+  color: #666;
+  margin-left: 15rpx;}
+.post{
+  height: 66rpx;
+  width: 630rpx;
+  background: #f1f1f1;
+  border-radius: 33rpx;
+  margin: 30rpx;
+  padding: 0 30rpx;
+}
+.placeholder{
+font-size:28rpx;
+}

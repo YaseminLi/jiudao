@@ -1,0 +1,24 @@
+<image class="bg-img" src="/images/my/my@bg.png" />
+<view class="user">
+  <image class="avatar" src="/images/my/my.png" />
+  <text class="user-name">Ming</text>
+  <view class='about'>
+    <view class='about-item'>
+      <image src="/images/my/about.png" />
+      <text>关于我们</text>
+    </view>
+    <view class='about-item' bind:tap='onMyBookList'>
+      <text class='like-num'>17</text>
+      <text >我的书单</text>
+    </view>
+  </view>
+</view>
+
+<view class='like-container'>
+  <view class='title'>
+    <image src='/images/my/like.png' />
+  </view>
+  <block wx:for='{{favorList}}' wx:key='{{index}}'>
+  <v-preview class="preview-item" favor='{{item}}'/>
+  </block>
+</view>

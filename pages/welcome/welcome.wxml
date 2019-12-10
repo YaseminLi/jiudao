@@ -1,0 +1,16 @@
+<view class='container'>
+  <open-data class='user-avatar' type="userAvatarUrl"></open-data>
+  <view class='userName-container'>
+    <text class='user-name' decode='true'>hello&nbsp;&nbsp;</text>
+    <open-data class='user-name' type="userNickName" lang="zh_CN"></open-data>
+  </view>
+
+  <view class='moto-container'>
+    <!-- bind:绑定事件 -->
+    <!-- <text class='moto' bindtap='onTap'>开启小程序之旅</text> -->
+    <!-- button组件 -->
+    <button size='mini' plain='true' bindtap='onTap' class='moto'>开启小程序之旅</button>
+  </view>
+
+
+</view>

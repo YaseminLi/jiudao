@@ -1,0 +1,11 @@
+<wxs src="../../wxs/index.wxs" module="tools" />
+<view class='preview-container'>
+  <view class='header'>
+    <text class='type'>{{tools.typeName(favor.type)}}</text>
+    <v-like isLike="{{favor.like_status}}" likeCount="{{favor.fav_nums}}"  class="like"/>
+  </view>
+  <image class="image"src='{{favor.image}}' />
+  <text class='content'>{{favor.content}}</text>
+</view>
+
+

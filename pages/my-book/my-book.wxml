@@ -1,0 +1,9 @@
+<view class='book-item'>
+  <v-book-like/>
+</view>
+<view class='book-item'>
+  <v-book-like/>
+</view>
+<view class='book-item'>
+  <v-book-like/>
+</view>

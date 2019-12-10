@@ -1,0 +1,9 @@
+text{
+    font-family:PingFangSC-Light, sans-serif;
+    font-size: 24rpx;
+    color: #666;
+}
+
+input{
+    font-family: "PingFang";
+}

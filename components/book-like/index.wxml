@@ -1,0 +1,8 @@
+<view class='book-like-container'>
+  <image class='book-img'src='images/book.png'/>
+  <view class='content'>
+    <text class='title'>爱你就像爱生命</text>
+    <text class='author'>李银河</text>
+  </view>
+  <image class='like-img'src='images/like.png'/>
+</view>
