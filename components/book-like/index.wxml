@@ -1,8 +1,8 @@
 <view class='book-like-container'>
-  <image class='book-img'src='images/book.png'/>
+  <image class='book-img'src='{{favor.image}}'/>
   <view class='content'>
-    <text class='title'>爱你就像爱生命</text>
-    <text class='author'>李银河</text>
+    <text class='title'>{{favor.title}}</text>
+    <text class='author'>{{favor.author}}</text>
   </view>
   <image class='like-img'src='images/like.png'/>
 </view>

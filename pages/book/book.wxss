@@ -24,6 +24,7 @@
 .box .placeholder{
   font-size: 28rpx;
   text-align: center;
+  margin-left:10rpx
 }
 .sub-container{
   background: #f5f5f5;

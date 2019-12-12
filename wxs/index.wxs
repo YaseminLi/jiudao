@@ -24,7 +24,7 @@ var typeName = function (type) {
   } else if (type == '100') {
     name = '电影'
   } else {
-    name = '电影'
+    name = '诗句'
   }
   return name
 }

@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {} }; __MODS__[
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = { exports: {} }; __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); if(typeof m.exports === "object") { __MODS__[modId].m.exports.__proto__ = m.exports.__proto__; Object.keys(m.exports).forEach(function(k) { __MODS__[modId].m.exports[k] = m.exports[k]; var desp = Object.getOwnPropertyDescriptor(m.exports, k); if(desp && desp.configurable) Object.defineProperty(m.exports, k, { set: function(val) { __MODS__[modId].m.exports[k] = val; }, get: function() { return __MODS__[modId].m.exports[k]; } }); }); if(m.exports.__esModule) Object.defineProperty(__MODS__[modId].m.exports, "__esModule", { value: true }); } else { __MODS__[modId].m.exports = m.exports; } } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1575975600333, function(require, module, exports) {
+__DEFINE__(1576067120612, function(require, module, exports) {
 
 
 var assign = require('./helpers/assign');
@@ -32,8 +32,8 @@ assign(ES, ES2015);
 
 module.exports = ES;
 
-}, function(modId) {var map = {"./helpers/assign":1575975600334,"./es5":1575975600336,"./es2015":1575975600346,"./es2016":1575975600357,"./es2017":1575975600359,"./es2018":1575975600360,"./es2019":1575975600361}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600334, function(require, module, exports) {
+}, function(modId) {var map = {"./helpers/assign":1576067120613,"./es5":1576067120615,"./es2015":1576067120625,"./es2016":1576067120636,"./es2017":1576067120638,"./es2018":1576067120639,"./es2019":1576067120640}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120613, function(require, module, exports) {
 
 
 var GetIntrinsic = require('../GetIntrinsic');
@@ -57,8 +57,8 @@ module.exports = function assign(target, source) {
 	return target;
 };
 
-}, function(modId) { var map = {"../GetIntrinsic":1575975600335}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600335, function(require, module, exports) {
+}, function(modId) { var map = {"../GetIntrinsic":1576067120614}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120614, function(require, module, exports) {
 
 
 /* globals
@@ -271,7 +271,7 @@ module.exports = function GetIntrinsic(name, allowMissing) {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600336, function(require, module, exports) {
+__DEFINE__(1576067120615, function(require, module, exports) {
 
 
 var GetIntrinsic = require('./GetIntrinsic');
@@ -817,8 +817,8 @@ var ES5 = {
 
 module.exports = ES5;
 
-}, function(modId) { var map = {"./GetIntrinsic":1575975600335,"./helpers/assertRecord":1575975600337,"./helpers/isPropertyDescriptor":1575975600338,"./helpers/isNaN":1575975600339,"./helpers/isFinite":1575975600340,"./helpers/sign":1575975600341,"./helpers/mod":1575975600342,"./helpers/isPrefixOf":1575975600343,"./helpers/callBound":1575975600344}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600337, function(require, module, exports) {
+}, function(modId) { var map = {"./GetIntrinsic":1576067120614,"./helpers/assertRecord":1576067120616,"./helpers/isPropertyDescriptor":1576067120617,"./helpers/isNaN":1576067120618,"./helpers/isFinite":1576067120619,"./helpers/sign":1576067120620,"./helpers/mod":1576067120621,"./helpers/isPrefixOf":1576067120622,"./helpers/callBound":1576067120623}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120616, function(require, module, exports) {
 
 
 var GetIntrinsic = require('../GetIntrinsic');
@@ -868,8 +868,8 @@ module.exports = function assertRecord(ES, recordType, argumentName, value) {
 	}
 };
 
-}, function(modId) { var map = {"../GetIntrinsic":1575975600335}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600338, function(require, module, exports) {
+}, function(modId) { var map = {"../GetIntrinsic":1576067120614}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120617, function(require, module, exports) {
 
 
 var GetIntrinsic = require('../GetIntrinsic');
@@ -902,8 +902,8 @@ module.exports = function IsPropertyDescriptor(ES, Desc) {
 	return true;
 };
 
-}, function(modId) { var map = {"../GetIntrinsic":1575975600335}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600339, function(require, module, exports) {
+}, function(modId) { var map = {"../GetIntrinsic":1576067120614}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120618, function(require, module, exports) {
 
 
 module.exports = Number.isNaN || function isNaN(a) {
@@ -911,7 +911,7 @@ module.exports = Number.isNaN || function isNaN(a) {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600340, function(require, module, exports) {
+__DEFINE__(1576067120619, function(require, module, exports) {
 
 
 var $isNaN = Number.isNaN || function (a) { return a !== a; };
@@ -919,7 +919,7 @@ var $isNaN = Number.isNaN || function (a) { return a !== a; };
 module.exports = Number.isFinite || function (x) { return typeof x === 'number' && !$isNaN(x) && x !== Infinity && x !== -Infinity; };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600341, function(require, module, exports) {
+__DEFINE__(1576067120620, function(require, module, exports) {
 
 
 module.exports = function sign(number) {
@@ -927,7 +927,7 @@ module.exports = function sign(number) {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600342, function(require, module, exports) {
+__DEFINE__(1576067120621, function(require, module, exports) {
 
 
 module.exports = function mod(number, modulo) {
@@ -936,7 +936,7 @@ module.exports = function mod(number, modulo) {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600343, function(require, module, exports) {
+__DEFINE__(1576067120622, function(require, module, exports) {
 
 
 var $strSlice = require('../helpers/callBound')('String.prototype.slice');
@@ -951,8 +951,8 @@ module.exports = function isPrefixOf(prefix, string) {
 	return $strSlice(string, 0, prefix.length) === prefix;
 };
 
-}, function(modId) { var map = {"../helpers/callBound":1575975600344}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600344, function(require, module, exports) {
+}, function(modId) { var map = {"../helpers/callBound":1576067120623}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120623, function(require, module, exports) {
 
 
 var GetIntrinsic = require('../GetIntrinsic');
@@ -969,8 +969,8 @@ module.exports = function callBoundIntrinsic(name, allowMissing) {
 	return intrinsic;
 };
 
-}, function(modId) { var map = {"../GetIntrinsic":1575975600335,"./callBind":1575975600345}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600345, function(require, module, exports) {
+}, function(modId) { var map = {"../GetIntrinsic":1576067120614,"./callBind":1576067120624}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120624, function(require, module, exports) {
 
 
 var bind = require('function-bind');
@@ -989,8 +989,8 @@ module.exports.apply = function applyBind() {
 	return bind.apply($apply, arguments);
 };
 
-}, function(modId) { var map = {"../GetIntrinsic":1575975600335}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600346, function(require, module, exports) {
+}, function(modId) { var map = {"../GetIntrinsic":1576067120614}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120625, function(require, module, exports) {
 
 
 var has = require('has');
@@ -2455,8 +2455,8 @@ delete ES6.CheckObjectCoercible; // renamed in ES6 to RequireObjectCoercible
 
 module.exports = ES6;
 
-}, function(modId) { var map = {"./GetIntrinsic":1575975600335,"./helpers/assertRecord":1575975600337,"./helpers/isNaN":1575975600339,"./helpers/isFinite":1575975600340,"./helpers/maxSafeInteger":1575975600347,"./helpers/assign":1575975600334,"./helpers/sign":1575975600341,"./helpers/mod":1575975600342,"./helpers/isPrimitive":1575975600348,"./helpers/forEach":1575975600349,"./helpers/every":1575975600350,"./helpers/isSamePropertyDescriptor":1575975600351,"./helpers/isPropertyDescriptor":1575975600338,"./helpers/callBound":1575975600344,"./helpers/regexTester":1575975600352,"./helpers/getIteratorMethod":1575975600353,"./helpers/getSymbolDescription":1575975600354,"./helpers/setProto":1575975600356,"./es5":1575975600336}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600347, function(require, module, exports) {
+}, function(modId) { var map = {"./GetIntrinsic":1576067120614,"./helpers/assertRecord":1576067120616,"./helpers/isNaN":1576067120618,"./helpers/isFinite":1576067120619,"./helpers/maxSafeInteger":1576067120626,"./helpers/assign":1576067120613,"./helpers/sign":1576067120620,"./helpers/mod":1576067120621,"./helpers/isPrimitive":1576067120627,"./helpers/forEach":1576067120628,"./helpers/every":1576067120629,"./helpers/isSamePropertyDescriptor":1576067120630,"./helpers/isPropertyDescriptor":1576067120617,"./helpers/callBound":1576067120623,"./helpers/regexTester":1576067120631,"./helpers/getIteratorMethod":1576067120632,"./helpers/getSymbolDescription":1576067120633,"./helpers/setProto":1576067120635,"./es5":1576067120615}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120626, function(require, module, exports) {
 
 
 var GetIntrinsic = require('../GetIntrinsic');
@@ -2466,8 +2466,8 @@ var $Number = GetIntrinsic('%Number%');
 
 module.exports = $Number.MAX_SAFE_INTEGER || $Math.pow(2, 53) - 1;
 
-}, function(modId) { var map = {"../GetIntrinsic":1575975600335}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600348, function(require, module, exports) {
+}, function(modId) { var map = {"../GetIntrinsic":1576067120614}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120627, function(require, module, exports) {
 
 
 module.exports = function isPrimitive(value) {
@@ -2475,7 +2475,7 @@ module.exports = function isPrimitive(value) {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600349, function(require, module, exports) {
+__DEFINE__(1576067120628, function(require, module, exports) {
 
 
 module.exports = function forEach(array, callback) {
@@ -2485,7 +2485,7 @@ module.exports = function forEach(array, callback) {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600350, function(require, module, exports) {
+__DEFINE__(1576067120629, function(require, module, exports) {
 
 
 module.exports = function every(array, predicate) {
@@ -2498,7 +2498,7 @@ module.exports = function every(array, predicate) {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600351, function(require, module, exports) {
+__DEFINE__(1576067120630, function(require, module, exports) {
 
 
 var every = require('./every');
@@ -2520,8 +2520,8 @@ module.exports = function isSamePropertyDescriptor(ES, D1, D2) {
 	});
 };
 
-}, function(modId) { var map = {"./every":1575975600350}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600352, function(require, module, exports) {
+}, function(modId) { var map = {"./every":1576067120629}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120631, function(require, module, exports) {
 
 
 var GetIntrinsic = require('../GetIntrinsic');
@@ -2534,8 +2534,8 @@ module.exports = function regexTester(regex) {
 	return callBind($test, regex);
 };
 
-}, function(modId) { var map = {"../GetIntrinsic":1575975600335,"./callBind":1575975600345}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600353, function(require, module, exports) {
+}, function(modId) { var map = {"../GetIntrinsic":1576067120614,"./callBind":1576067120624}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120632, function(require, module, exports) {
 
 
 var hasSymbols = require('has-symbols')();
@@ -2582,8 +2582,8 @@ module.exports = function getIteratorMethod(ES, iterable) {
 	return usingIterator;
 };
 
-}, function(modId) { var map = {"../GetIntrinsic":1575975600335,"./callBound":1575975600344}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600354, function(require, module, exports) {
+}, function(modId) { var map = {"../GetIntrinsic":1576067120614,"./callBound":1576067120623}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120633, function(require, module, exports) {
 
 
 var GetIntrinsic = require('../GetIntrinsic');
@@ -2615,8 +2615,8 @@ module.exports = function getSymbolDescription(symbol) {
 	}
 };
 
-}, function(modId) { var map = {"../GetIntrinsic":1575975600335,"./callBound":1575975600344,"./getInferredName":1575975600355}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600355, function(require, module, exports) {
+}, function(modId) { var map = {"../GetIntrinsic":1576067120614,"./callBound":1576067120623,"./getInferredName":1576067120634}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120634, function(require, module, exports) {
 
 
 var getInferredName;
@@ -2629,7 +2629,7 @@ var inferred = function () {};
 module.exports = getInferredName && inferred.name === 'inferred' ? getInferredName : null;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600356, function(require, module, exports) {
+__DEFINE__(1576067120635, function(require, module, exports) {
 
 
 var GetIntrinsic = require('../GetIntrinsic');
@@ -2647,8 +2647,8 @@ module.exports = originalSetProto || (
 		}
 );
 
-}, function(modId) { var map = {"../GetIntrinsic":1575975600335}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600357, function(require, module, exports) {
+}, function(modId) { var map = {"../GetIntrinsic":1576067120614}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120636, function(require, module, exports) {
 
 
 var ES2015 = require('./es2015');
@@ -2748,8 +2748,8 @@ var ES2016 = assign(assign({}, ES2015), {
 
 module.exports = ES2016;
 
-}, function(modId) { var map = {"./es2015":1575975600346,"./GetIntrinsic":1575975600335,"./helpers/assign":1575975600334,"./helpers/setProto":1575975600356,"./helpers/callBound":1575975600344,"./helpers/getIteratorMethod":1575975600353,"./helpers/getProto":1575975600358}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600358, function(require, module, exports) {
+}, function(modId) { var map = {"./es2015":1576067120625,"./GetIntrinsic":1576067120614,"./helpers/assign":1576067120613,"./helpers/setProto":1576067120635,"./helpers/callBound":1576067120623,"./helpers/getIteratorMethod":1576067120632,"./helpers/getProto":1576067120637}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120637, function(require, module, exports) {
 
 
 var GetIntrinsic = require('../GetIntrinsic');
@@ -2766,8 +2766,8 @@ module.exports = originalGetProto || (
 		: null
 );
 
-}, function(modId) { var map = {"../GetIntrinsic":1575975600335}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600359, function(require, module, exports) {
+}, function(modId) { var map = {"../GetIntrinsic":1576067120614}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120638, function(require, module, exports) {
 
 
 var GetIntrinsic = require('./GetIntrinsic');
@@ -2840,8 +2840,8 @@ delete ES2017.IterableToArrayLike; // replaced with IterableToList
 
 module.exports = ES2017;
 
-}, function(modId) { var map = {"./GetIntrinsic":1575975600335,"./es2016":1575975600357,"./helpers/assign":1575975600334,"./helpers/forEach":1575975600349,"./helpers/callBind":1575975600345,"./helpers/callBound":1575975600344}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600360, function(require, module, exports) {
+}, function(modId) { var map = {"./GetIntrinsic":1576067120614,"./es2016":1576067120636,"./helpers/assign":1576067120613,"./helpers/forEach":1576067120628,"./helpers/callBind":1576067120624,"./helpers/callBound":1576067120623}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120639, function(require, module, exports) {
 
 
 var GetIntrinsic = require('./GetIntrinsic');
@@ -3132,8 +3132,8 @@ delete ES2018.IsPropertyDescriptor; // not an actual abstract operation
 
 module.exports = ES2018;
 
-}, function(modId) { var map = {"./GetIntrinsic":1575975600335,"./es2017":1575975600359,"./helpers/assign":1575975600334,"./helpers/forEach":1575975600349,"./helpers/callBind":1575975600345,"./helpers/every":1575975600350,"./helpers/isPrefixOf":1575975600343,"./helpers/callBound":1575975600344,"./helpers/regexTester":1575975600352,"./helpers/isNaN":1575975600339}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1575975600361, function(require, module, exports) {
+}, function(modId) { var map = {"./GetIntrinsic":1576067120614,"./es2017":1576067120638,"./helpers/assign":1576067120613,"./helpers/forEach":1576067120628,"./helpers/callBind":1576067120624,"./helpers/every":1576067120629,"./helpers/isPrefixOf":1576067120622,"./helpers/callBound":1576067120623,"./helpers/regexTester":1576067120631,"./helpers/isNaN":1576067120618}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576067120640, function(require, module, exports) {
 
 
 var trimStart = require('string.prototype.trimleft');
@@ -3246,7 +3246,7 @@ var ES2019 = assign(assign({}, ES2018), {
 
 module.exports = ES2019;
 
-}, function(modId) { var map = {"./es2018":1575975600360,"./helpers/assign":1575975600334,"./helpers/maxSafeInteger":1575975600347,"./GetIntrinsic":1575975600335}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1575975600333);
+}, function(modId) { var map = {"./es2018":1576067120639,"./helpers/assign":1576067120613,"./helpers/maxSafeInteger":1576067120626,"./GetIntrinsic":1576067120614}; return __REQUIRE__(map[modId], modId); })
+return __REQUIRE__(1576067120612);
 })()
 //# sourceMappingURL=index.js.map

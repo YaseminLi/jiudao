@@ -26,7 +26,7 @@ Page({
     classicModel.like(behavior, this.data.classic.index,this.data.likeCount,(data) => {
       this.setData({
         likeCount: data.nums,
-        likeStatus:data.like_status
+        likeStatus:data.like_status==0?false:true
       })
     });
   },

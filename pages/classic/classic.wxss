@@ -13,11 +13,11 @@
   border-bottom:1px solid #f5f5f5;
 }
 .header .button{
-  width: 110rpx;
+  width: 130rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: right; */
   margin-right: 20rpx;
 }
 .header .epsiode{

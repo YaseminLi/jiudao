@@ -19,4 +19,4 @@
     </view>
   </view>
 </view>
-<v-search wx:if="{{showSearch}}" bind:cancelSearch='onShowSearch' more='{{more}}'/>
+<v-search wx:if="{{showSearch}}" bind:cancelSearch='onShowSearch' bind:bookDetail='onBookDetail'/>

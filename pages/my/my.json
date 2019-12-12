@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "v-preview": "/components/preview/index"
+    "v-preview": "/components/preview/index",
+    "v-book-like": "/components/book-like/index"
   },
   "navigationBarTitleText": "旧岛",
   "navigationBarBackgroundColor": "#ffffff",

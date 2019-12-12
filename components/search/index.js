@@ -3,15 +3,13 @@ import {
 } from '../../api/search.js';
 const searchModel = new SearchModel();
 Component({
-  properties:{
-    more:Boolean,
-  },
   data: {
     hotKeyword: '',
     historySearch: '',
     inputValue: '',
     searchResult: '',
-    isSearching: false
+    isSearching: false,
+    haveResult:false
   },
   observers:{
     //触底加载更多
@@ -35,6 +33,7 @@ Component({
       this.triggerEvent('cancelSearch', {}, {});
     },
     onClearInput: function(event) {
+      console.log('clear')
       this.setData({
         isSearching: false,
         inputValue: '',
@@ -46,27 +45,21 @@ Component({
         isSearching: true
       });
       const q = event.detail.value || event.detail.comment;
-      const searchResult = wx.getStorageSync('bookSearch-' + q);
-      if (searchResult) {
-        this.setData({
-          searchResult
-        })
-      } else {
-        searchModel.getSearch(data => {
+        searchModel.getSearch(q,data => {
           this.setData({
             searchResult: data,
-            inputValue:q
-          });
-          wx.setStorageSync('bookSearch-' + q, data)
-          searchModel.addInputToHistory(q);
+            inputValue: q
+          })
+          if(typeof data!=='string'){
+            this.setData({
+              haveResult:true
+            });
+          }
         })
-      };
-
     },
     onBookDetail: function (event) {
-      wx.navigateTo({
-        url: '/pages/book-detail/book-detail?id=' + event.currentTarget.dataset.id,
-      })
+    let id=event.currentTarget.dataset.id
+      this.triggerEvent('bookDetail', {id:id}, {});
     },
   }
 })

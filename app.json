@@ -5,7 +5,8 @@
     "pages/book/book",
     "pages/book-detail/book-detail",
     "pages/my/my",
-    "pages/my-book/my-book"
+    "pages/my-book/my-book",
+    "pages/classic-detail/classic-detail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

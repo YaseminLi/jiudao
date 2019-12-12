@@ -1,9 +1,9 @@
 <view class='search-header'>
   <view class='search-box'>
     <icon type='search' size='14' />
-    <input type="text" placeholder='书籍名' placeholder-class='search-placeholder' focus='true' value='{{inputValue}}' bindconfirm='onSearch'/>
-    <image src='images/cancel.png' bind:tap='onClearInput'/>
+    <input type="text" placeholder='书籍名' placeholder-class='search-placeholder' focus='true' value='{{inputValue}}' bindconfirm='onSearch' /> 
   </view>
+   <image src='images/cancel.png' bind:tap='onClearInput' />
   <text class='cancel' bind:tap='onCancelSearch'>取消</text>
 </view>
 <view class='history' wx:if='{{!isSearching}}'>
@@ -12,9 +12,11 @@
     <text>历史搜索</text>
   </view>
   <text wx:if='{{!historySearch}}'>还没有搜索记录～</text>
-  <view  wx:else class='tag-container'>
+  <view wx:else class='tag-container'>
     <block wx:for='{{historySearch}}' wx:key='{{index}}'>
-    <view class='tag-item'><v-tag content='{{item}}' bind:tapping='onSearch'/></view>
+      <view class='tag-item'>
+        <v-tag content='{{item}}' bind:tapping='onSearch' />
+      </view>
     </block>
   </view>
 </view>
@@ -24,12 +26,16 @@
     <text>热门搜索</text>
   </view>
   <view class='tag-container'>
-  <block wx:for='{{hotKeyword}}' wx:key='{{index}}'>
-    <view class='tag-item'><v-tag content='{{item}}' bind:tapping='onSearch'/></view>
+    <block wx:for='{{hotKeyword}}' wx:key='{{index}}'>
+      <view class='tag-item'>
+        <v-tag content='{{item}}' bind:tapping='onSearch' />
+      </view>
     </block>
   </view>
 </view>
 <view class='searchResult' wx:if='{{isSearching}}'>
-<block wx:for='{{searchResult}}' wx:key='{{index}}'>
-<v-book book='{{item}}' bind:tap='onBookDetail' data-id='{{item.id}}'/>
-</block></view>
+  <block wx:for='{{searchResult}}' wx:key='{{index}}' wx:if='{{haveResult}}'>
+    <v-book book='{{item}}' bind:tap='onBookDetail' data-id='{{item.id}}' />
+  </block>
+  <text  class='tip' wx:if='{{!haveResult}}'>{{searchResult}}</text>
+</view>

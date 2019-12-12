@@ -38,8 +38,8 @@ class ClassicModel {
     })
   }
   like(behavior,index,favNums,sCallback) {
-    let newFavNums = behavior == "like" ? favNums + 1 : favNums - 1;
-    let status = behavior == "like" ?  1 : 0;
+    let newFavNums = behavior == "like" ? favNums - 1 : favNums +1;
+    let status = behavior == "like" ?  0 : 1;
     wx.cloud.callFunction({
       // 云函数名称
       name: 'like',
@@ -58,7 +58,7 @@ class ClassicModel {
     })
 
   }
-  getMyfavor(sCallback) {
+  getMyfavorClassic(sCallback) {
     db.collection('cla').where({
       "like_status": 1
     }).get({

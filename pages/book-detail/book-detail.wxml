@@ -51,7 +51,7 @@
     <text class='input'>留下你的短评吧～</text>
   </view>
   <view class='button'>
-    <v-like isLike='{{likeStatus}}' count='{{likeCount}}' />
+    <v-like isLike='{{likeStatus}}' likeCount='{{likeCount}}' bind:bookLike='onBookLike'/>
     <image src='/images/icon/fenxiang.png' />
   </view>
 </view>
@@ -60,18 +60,18 @@
 <view class='posting-container' wx:if='{{posting}}'>
 
   <view class='post-header'>
-    <text wx:if='{{comment}}'>仅可点击标签+1</text>
+    <text wx:if='{{comment}}'>评论功能暂未开通！</text>
     <text wx:else>暂无标签</text>
     <text bind:tap='onFakePost'>取消</text>
   </view>
   <view class='comment-container' wx:if='{{comment}}'>
     <block wx:for='{{tools.limit(comment,3)}}' wx:key='{{index}}'>
-      <v-tag  content='{{item.content}}' tag-class='{{highlight.highlight(index)}}' bind:tapping='onPost'>
+      <v-tag  content='{{item.content}}' tag-class='{{highlight.highlight(index)}}'>
         <text class='count' slot='after'>+1</text>
       </v-tag>
     </block>
   </view>
-  <input class='post' focus='true' placeholder='短评最多12个字' placeholder-class='placeholder' bindconfirm='onPost' value='{{inputValue}}'/>
+  <input class='post'  placeholder='短评最多12个字' placeholder-class='placeholder' bindconfirm='onPost' value='{{inputValue}}'/>
 </view>
 <v-mask wx:if='{{posting}}'/>
 <wxs module='highlight'>

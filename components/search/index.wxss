@@ -27,12 +27,17 @@
   font-size: 28rpx;
   margin-left: 10rpx;
 }
+.search-box input{
+font-size:28rpx
+}
 .search-box icon{
   margin-right: 10rpx;
 }
-.search-box image{
+
+.search-header image{
   width: 28rpx;
   height: 28rpx;
+  margin-left:-100rpx
 }
 .search-header .cancel{
   font-size: 28rpx;
@@ -78,4 +83,7 @@ font-weight: 800;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+.tip{
+  margin:40rpx auto
 }

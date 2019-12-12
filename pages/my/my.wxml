@@ -1,24 +1,24 @@
 <image class="bg-img" src="/images/my/my@bg.png" />
 <view class="user">
   <image class="avatar" src="/images/my/my.png" />
-  <text class="user-name">Ming</text>
+  <text class="user-name">点击登录</text>
   <view class='about'>
-    <view class='about-item'>
-      <image src="/images/my/about.png" />
-      <text>关于我们</text>
+    <view  id="{{showClassic?'show':''}}" class='about-item' bind:tap='onShowList'>
+      <text class='like-num'>{{classicFavorNum}}</text>
+      <text>我的期刊</text>
     </view>
-    <view class='about-item' bind:tap='onMyBookList'>
-      <text class='like-num'>17</text>
+    <view  bind:tap='onShowList'id="{{showClassic?'':'show'}}" class='about-item'>
+      <text class='like-num'>{{bookFavorNum}}</text>
       <text >我的书单</text>
     </view>
   </view>
 </view>
 
 <view class='like-container'>
-  <view class='title'>
-    <image src='/images/my/like.png' />
-  </view>
-  <block wx:for='{{favorList}}' wx:key='{{index}}'>
+  <block wx:for='{{classicFavorList}}' wx:key='{{index}}' wx:if="{{showClassic}}" bind:tap='onClassicDetail'>
   <v-preview class="preview-item" favor='{{item}}'/>
+  </block>
+  <block wx:for='{{bookFavorList}}' wx:key='{{index}}' wx:if="{{!showClassic}}">
+  <v-book-like class="preview-item" favor='{{item}}'bind:tap='onBookDetail' data-id='{{item.id}}'/>
   </block>
 </view>

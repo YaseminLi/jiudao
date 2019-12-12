@@ -14,7 +14,7 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.6",
+	"libVersion": "2.7.7",
 	"appid": "wxd2f02ea62e46010c",
 	"projectname": "%E6%97%A7%E5%B2%9B-db",
 	"debugOptions": {
