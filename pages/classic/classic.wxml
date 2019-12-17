@@ -1,4 +1,4 @@
-<view class='class-container'>
+<view class='class-container' wx:if="{{showPage}}">
   <view class='header'>
     <v-epsiode index="{{classic.index}}" pubdate="{{classic.pubdate}}" class="epsiode" />
     <view class='button'>

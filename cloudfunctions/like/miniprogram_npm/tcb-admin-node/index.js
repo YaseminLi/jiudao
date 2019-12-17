@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {} }; __MODS__[
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = { exports: {} }; __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); if(typeof m.exports === "object") { __MODS__[modId].m.exports.__proto__ = m.exports.__proto__; Object.keys(m.exports).forEach(function(k) { __MODS__[modId].m.exports[k] = m.exports[k]; var desp = Object.getOwnPropertyDescriptor(m.exports, k); if(desp && desp.configurable) Object.defineProperty(m.exports, k, { set: function(val) { __MODS__[modId].m.exports[k] = val; }, get: function() { return __MODS__[modId].m.exports[k]; } }); }); if(m.exports.__esModule) Object.defineProperty(__MODS__[modId].m.exports, "__esModule", { value: true }); } else { __MODS__[modId].m.exports = m.exports; } } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1576067120831, function(require, module, exports) {
+__DEFINE__(1576493740708, function(require, module, exports) {
 const Db = require('@cloudbase/database').Db
 const storage = require('./src/storage')
 const functions = require('./src/functions')
@@ -139,8 +139,8 @@ extend(Tcb.prototype, logger)
 
 module.exports = new Tcb()
 
-}, function(modId) {var map = {"./src/storage":1576067120832,"./src/functions":1576067120839,"./src/auth":1576067120840,"./src/wx":1576067120841,"./src/utils/dbRequest":1576067120842,"./src/log":1576067120843}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120832, function(require, module, exports) {
+}, function(modId) {var map = {"./src/storage":1576493740709,"./src/functions":1576493740716,"./src/auth":1576493740717,"./src/wx":1576493740718,"./src/utils/dbRequest":1576493740719,"./src/log":1576493740720}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493740709, function(require, module, exports) {
 const request = require('request')
 const fs = require('fs')
 const httpRequest = require('../utils/httpRequest')
@@ -401,8 +401,8 @@ exports.getTempFileURL = getTempFileURL
 exports.downloadFile = downloadFile
 exports.getUploadMetadata = getUploadMetadata
 
-}, function(modId) { var map = {"../utils/httpRequest":1576067120833}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120833, function(require, module, exports) {
+}, function(modId) { var map = {"../utils/httpRequest":1576493740710}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493740710, function(require, module, exports) {
 const http = require('http')
 const request = require('request')
 const auth = require('./auth.js')
@@ -440,7 +440,7 @@ function doRequest(args) {
   })
   utils.filterUndefined(params)
 
-  // file 和 wx.openApi带的requestData 需避开签名
+  // file 和 wx.openApi 以及 wx.wxPayApi 带的requestData 需避开签名
   let file = null
   if (params.action === 'storage.uploadFile') {
     file = params['file']
@@ -448,7 +448,7 @@ function doRequest(args) {
   }
 
   let requestData = null
-  if (params.action === 'wx.openApi') {
+  if (params.action === 'wx.openApi' || params.action === 'wx.wxPayApi') {
     requestData = params['requestData']
     delete params['requestData']
   }
@@ -484,7 +484,11 @@ function doRequest(args) {
     url = 'http://tcb-admin.tencentyun.com/admin'
   }
 
-  if (params.action === 'wx.api' || params.action === 'wx.openApi') {
+  if (
+    params.action === 'wx.api' ||
+    params.action === 'wx.openApi' ||
+    params.action === 'wx.wxPayApi'
+  ) {
     url = protocol + '://tcb-open.tencentcloudapi.com/admin'
   }
 
@@ -512,7 +516,7 @@ function doRequest(args) {
       }
     }
   } else if (args.method == 'post') {
-    if (params.action === 'wx.openApi') {
+    if (params.action === 'wx.openApi' || params.action === 'wx.wxPayApi') {
       opts.formData = params
       opts.encoding = null
     } else {
@@ -538,8 +542,11 @@ function doRequest(args) {
         let res
         try {
           res = typeof body === 'string' ? JSON.parse(body) : body
-          // wx.openApi 调用时，需用content-type区分buffer or JSON
-          if (params.action === 'wx.openApi') {
+          // wx.openApi 和 wx.wxPayApi 调用时，需用content-type区分buffer or JSON
+          if (
+            params.action === 'wx.openApi' ||
+            params.action === 'wx.wxPayApi'
+          ) {
             const { headers } = response
             if (headers['content-type'] === 'application/json; charset=utf-8') {
               res = JSON.parse(res.toString()) // JSON错误时buffer转JSON
@@ -561,8 +568,8 @@ function doRequest(args) {
   })
 }
 
-}, function(modId) { var map = {"./auth.js":1576067120834,"./tracing":1576067120835,"./utils":1576067120836,"../../package.json":1576067120837,"./getWxCloudApiToken":1576067120838}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120834, function(require, module, exports) {
+}, function(modId) { var map = {"./auth.js":1576493740711,"./tracing":1576493740712,"./utils":1576493740713,"../../package.json":1576493740714,"./getWxCloudApiToken":1576493740715}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493740711, function(require, module, exports) {
 var crypto = require('crypto')
 
 function camSafeUrlEncode(str) {
@@ -720,7 +727,7 @@ var getAuth = function(opt) {
 exports.getAuth = getAuth
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120835, function(require, module, exports) {
+__DEFINE__(1576493740712, function(require, module, exports) {
 let seqNum = 0
 
 function getSeqNum() {
@@ -748,7 +755,7 @@ exports.generateTracingInfo = function generateTracingInfo() {
 }
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120836, function(require, module, exports) {
+__DEFINE__(1576493740713, function(require, module, exports) {
 exports.filterValue = function filterValue(o, value) {
   for (let key in o) {
     if (o[key] === value) {
@@ -806,30 +813,30 @@ exports.warpPromise = function warp(fn) {
 }
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120837, function(require, module, exports) {
+__DEFINE__(1576493740714, function(require, module, exports) {
 module.exports = {
-  "_from": "tcb-admin-node@1.16.3",
-  "_id": "tcb-admin-node@1.16.3",
+  "_from": "tcb-admin-node@1.18.0",
+  "_id": "tcb-admin-node@1.18.0",
   "_inBundle": false,
-  "_integrity": "sha1-7rqAVP6rWfHczUTpMm8PI7nrj/E=",
+  "_integrity": "sha1-gbjDAONrqROx61OIF/bG3K1n+e0=",
   "_location": "/tcb-admin-node",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "tcb-admin-node@1.16.3",
+    "raw": "tcb-admin-node@1.18.0",
     "name": "tcb-admin-node",
     "escapedName": "tcb-admin-node",
-    "rawSpec": "1.16.3",
+    "rawSpec": "1.18.0",
     "saveSpec": null,
-    "fetchSpec": "1.16.3"
+    "fetchSpec": "1.18.0"
   },
   "_requiredBy": [
     "/wx-server-sdk"
   ],
-  "_resolved": "https://registry.npm.taobao.org/tcb-admin-node/download/tcb-admin-node-1.16.3.tgz",
-  "_shasum": "eeba8054feab59f1dccd44e9326f0f23b9eb8ff1",
-  "_spec": "tcb-admin-node@1.16.3",
+  "_resolved": "https://registry.npm.taobao.org/tcb-admin-node/download/tcb-admin-node-1.18.0.tgz",
+  "_shasum": "81b8c300e36ba913b1eb538817f6c6dcad67f9ed",
+  "_spec": "tcb-admin-node@1.18.0",
   "_where": "/Users/xiaoming/WeChatProjects/jiuda-db/cloudfunctions/like/node_modules/wx-server-sdk",
   "author": {
     "name": "jimmyzhang"
@@ -839,7 +846,7 @@ module.exports = {
   },
   "bundleDependencies": false,
   "dependencies": {
-    "@cloudbase/database": "^0.9.2",
+    "@cloudbase/database": "^0.9.3",
     "is-regex": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
     "lodash.merge": "^4.6.1",
@@ -852,6 +859,7 @@ module.exports = {
     "@types/jest": "^23.1.4",
     "@types/mocha": "^5.2.4",
     "@types/node": "^10.12.12",
+    "bluebird": "^3.7.1",
     "dumper.js": "^1.3.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.1.0",
@@ -905,11 +913,11 @@ module.exports = {
     "tsc:w": "tsc -p tsconfig.json -w",
     "tstest": "mocha --timeout 5000 --require espower-typescript/guess test/**/*.test.ts"
   },
-  "version": "1.16.3"
+  "version": "1.18.0"
 }
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120838, function(require, module, exports) {
+__DEFINE__(1576493740715, function(require, module, exports) {
 // 由定时触发器触发时（TRIGGER_SRC=timer）：优先使用 WX_TRIGGER_API_TOKEN_V0，不存在的话，为了兼容兼容旧的开发者工具，也是使用 WX_API_TOKEN
 // 非定时触发器触发时（TRIGGER_SRC!=timer）: 使用 WX_API_TOKEN
 function getWxCloudApiToken() {
@@ -923,7 +931,7 @@ function getWxCloudApiToken() {
 module.exports = getWxCloudApiToken
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120839, function(require, module, exports) {
+__DEFINE__(1576493740716, function(require, module, exports) {
 const httpRequest = require('../utils/httpRequest')
 
 /**
@@ -979,8 +987,8 @@ function callFunction({ name, data }) {
 
 exports.callFunction = callFunction
 
-}, function(modId) { var map = {"../utils/httpRequest":1576067120833}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120840, function(require, module, exports) {
+}, function(modId) { var map = {"../utils/httpRequest":1576493740710}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493740717, function(require, module, exports) {
 const jwt = require('jsonwebtoken')
 
 function validateUid(uid) {
@@ -1014,6 +1022,9 @@ exports.auth = function() {
       validateUid(uid)
       const timestamp = new Date().getTime()
       const { credentials, envName } = this.config
+      if (!envName) {
+        throw new Error('no env in config')
+      }
       const {
         refresh = 3600 * 1000,
         expire = timestamp + 7 * 24 * 60 * 60 * 1000
@@ -1038,7 +1049,7 @@ exports.auth = function() {
 }
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120841, function(require, module, exports) {
+__DEFINE__(1576493740718, function(require, module, exports) {
 const httpRequest = require('../utils/httpRequest')
 
 exports.callWxOpenApi = function({ apiName, requestData } = {}) {
@@ -1097,11 +1108,32 @@ exports.callCompatibleWxOpenApi = function({ apiName, requestData } = {}) {
     params,
     method: 'post',
     headers: {}
-  }).then(res => res)
+  })
 }
 
-}, function(modId) { var map = {"../utils/httpRequest":1576067120833}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120842, function(require, module, exports) {
+/**
+ * wx.wxPayApi 微信支付用
+ * @param {String} apiName  接口名
+ * @param {Buffer} requestData
+ * @return {Promise} 正常内容为buffer，报错为json {code:'', message:'', resquestId:''}
+ */
+exports.callWxPayApi = function({ apiName, requestData } = {}) {
+  const params = {
+    action: 'wx.wxPayApi',
+    apiName,
+    requestData
+  }
+
+  return httpRequest({
+    config: this.config,
+    params,
+    method: 'post',
+    headers: {}
+  })
+}
+
+}, function(modId) { var map = {"../utils/httpRequest":1576493740710}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493740719, function(require, module, exports) {
 const httpRequest = require('./httpRequest')
 
 /**
@@ -1156,8 +1188,8 @@ class Request {
 
 module.exports = Request
 
-}, function(modId) { var map = {"./httpRequest":1576067120833}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120843, function(require, module, exports) {
+}, function(modId) { var map = {"./httpRequest":1576493740710}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493740720, function(require, module, exports) {
 /**
  *
  *
@@ -1249,6 +1281,6 @@ exports.logger = () => {
 }
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1576067120831);
+return __REQUIRE__(1576493740708);
 })()
 //# sourceMappingURL=index.js.map

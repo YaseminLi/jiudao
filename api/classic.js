@@ -1,7 +1,7 @@
 const db = wx.cloud.database()
 class ClassicModel {
   getLatest(index, sCallback) {
-    db.collection('classicLatest')
+    db.collection('cla')
       .get().then(res => {
         sCallback(res.data[0])
         this._setLatestIndex(res.data[0].index);

@@ -14,7 +14,7 @@
     <image class='quality' src='/images/book/quality.png' />
     <view class='book-list'>
       <block wx:for='{{hotList}}' wx:key='{{index}}'>
-        <v-book bind:tap='onBookDetail' data-id='{{item.id}}' book='{{item}}' />
+        <v-book bind:tap='onBookDetail' data-id='{{item.id}}' book='{{item}}'/>
       </block>
     </view>
   </view>

@@ -18,18 +18,14 @@ Page({
     // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
     eventChannel.on('acceptDataFromOpenerPage', function (data) {
       that.setData({
-        detail:data
+        detail:data,
+        likeStatus:data.like_status,
+        likeCount:data.fav_nums
       })
     })
     bookModel.getBookComment(id,(data)=>{
       this.setData({
         comment:data
-      })
-    })
-    bookModel.getBookFavor(id, (data) => {
-      this.setData({
-        likeStatus: data.like_status,
-        likeCount: data.fav_nums
       })
     })
   },
@@ -40,7 +36,10 @@ let behavior=event.detail.behavior
         likeCount: data.nums,
         likeStatus: data.like_status == 0 ? false : true
       })
+      const eventChannel = this.getOpenerEventChannel()
+      eventChannel.emit('changeLikeCount', { likeCount: this.data.likeCount, id: this.data.detail.id });
     });
+    
   },
   onFakePost: function(event) {
     this.setData({

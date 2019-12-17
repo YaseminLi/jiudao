@@ -1,20 +1,18 @@
 const db = wx.cloud.database()
 class BookModel {
   //精选列表数据
-  getHotList(sCallback) {
-    db.collection('bookList').get().then(res => {
-      sCallback(res.data)
-    })
-  }
+  // getHotList(sCallback) {
+  //   db.collection('bookList').get().then(res => {
+  //     sCallback(res.data)
+  //   })
+  // }
   //书籍详情
-  getBookDetail(id, sCallback) {
-    id = id - 0 //字符串类型转化为number类型
-    db.collection('bookDetail').where({
-      id: id
-    }).get({
+  getBookDetail(sCallback) {
+    // id = id - 0 //字符串类型转化为number类型
+    db.collection('bookDetail').get({
       success: function(res) {
         if (res.data.length > 0) {
-          sCallback(res.data[0])
+          sCallback(res.data)
         } else {
           sCallback(null)
         }
@@ -32,13 +30,13 @@ class BookModel {
     })
   }
   //获取点赞情况
-  getBookFavor(id, sCallback) {
-    db.collection('bookList').where({
-      id: id - 0
-    }).get().then(res => {
-      sCallback(res.data[0])
-    })
-  }
+  // getBookFavor(id, sCallback) {
+  //   db.collection('bookList').where({
+  //     id: id - 0
+  //   }).get().then(res => {
+  //     sCallback(res.data[0])
+  //   })
+  // }
   //提交评论
   //提交点赞
   bookLike(behavior, index, favNums, sCallback) {
@@ -63,7 +61,7 @@ class BookModel {
 
   }
   getMyfavorBook(sCallback) {
-    db.collection('bookList').where({
+    db.collection('bookDetail').where({
       "like_status": 1
     }).get({
       success: (res) => {

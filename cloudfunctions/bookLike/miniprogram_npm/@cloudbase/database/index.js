@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {} }; __MODS__[
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = { exports: {} }; __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); if(typeof m.exports === "object") { __MODS__[modId].m.exports.__proto__ = m.exports.__proto__; Object.keys(m.exports).forEach(function(k) { __MODS__[modId].m.exports[k] = m.exports[k]; var desp = Object.getOwnPropertyDescriptor(m.exports, k); if(desp && desp.configurable) Object.defineProperty(m.exports, k, { set: function(val) { __MODS__[modId].m.exports[k] = val; }, get: function() { return __MODS__[modId].m.exports[k]; } }); }); if(m.exports.__esModule) Object.defineProperty(__MODS__[modId].m.exports, "__esModule", { value: true }); } else { __MODS__[modId].m.exports = m.exports; } } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1576067120013, function(require, module, exports) {
+__DEFINE__(1576493738646, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const Geo = require("./geo/index");
@@ -12,7 +12,7 @@ const collection_1 = require("./collection");
 const command_1 = require("./command");
 const index_1 = require("./serverDate/index");
 const index_2 = require("./regexp/index");
-const transaction_1 = require("./transaction");
+const index_3 = require("./transaction/index");
 var query_1 = require("./query");
 exports.Query = query_1.Query;
 var collection_2 = require("./collection");
@@ -26,8 +26,8 @@ class Db {
         this.serverDate = index_1.ServerDateConstructor;
         this.command = command_1.Command;
         this.RegExp = index_2.RegExpConstructor;
-        this.startTransaction = transaction_1.startTransaction;
-        this.runTransaction = transaction_1.runTransaction;
+        this.startTransaction = index_3.startTransaction;
+        this.runTransaction = index_3.runTransaction;
     }
     collection(collName) {
         if (!collName) {
@@ -45,8 +45,8 @@ class Db {
 }
 exports.Db = Db;
 
-}, function(modId) {var map = {"./geo/index":1576067120014,"./collection":1576067120028,"./command":1576067120051,"./serverDate/index":1576067120019,"./regexp/index":1576067120052,"./transaction":1576067120053,"./query":1576067120048,"./document":1576067120029}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120014, function(require, module, exports) {
+}, function(modId) {var map = {"./geo/index":1576493738647,"./collection":1576493738661,"./command":1576493738684,"./serverDate/index":1576493738652,"./regexp/index":1576493738685,"./transaction/index":1576493738686,"./query":1576493738681,"./document":1576493738662}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738647, function(require, module, exports) {
 
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
@@ -59,8 +59,8 @@ __export(require("./multiPoint"));
 __export(require("./multiLineString"));
 __export(require("./multiPolygon"));
 
-}, function(modId) { var map = {"./point":1576067120015,"./lineString":1576067120023,"./polygon":1576067120024,"./multiPoint":1576067120025,"./multiLineString":1576067120026,"./multiPolygon":1576067120027}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120015, function(require, module, exports) {
+}, function(modId) { var map = {"./point":1576493738648,"./lineString":1576493738656,"./polygon":1576493738657,"./multiPoint":1576493738658,"./multiLineString":1576493738659,"./multiPolygon":1576493738660}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738648, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const validate_1 = require("../validate");
@@ -105,8 +105,8 @@ class Point {
 }
 exports.Point = Point;
 
-}, function(modId) { var map = {"../validate":1576067120016,"../helper/symbol":1576067120020,"../utils/type":1576067120022}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120016, function(require, module, exports) {
+}, function(modId) { var map = {"../validate":1576493738649,"../helper/symbol":1576493738653,"../utils/type":1576493738655}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738649, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const constant_1 = require("./constant");
@@ -164,8 +164,8 @@ class Validate {
 }
 exports.Validate = Validate;
 
-}, function(modId) { var map = {"./constant":1576067120017,"./util":1576067120018}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120017, function(require, module, exports) {
+}, function(modId) { var map = {"./constant":1576493738650,"./util":1576493738651}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738650, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var ErrorCode;
@@ -240,7 +240,7 @@ var QueryType;
 exports.QueryType = QueryType;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120018, function(require, module, exports) {
+__DEFINE__(1576493738651, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const constant_1 = require("./constant");
@@ -353,8 +353,8 @@ Util.generateDocId = () => {
     return autoId;
 };
 
-}, function(modId) { var map = {"./constant":1576067120017,"./geo/index":1576067120014,"./serverDate/index":1576067120019}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120019, function(require, module, exports) {
+}, function(modId) { var map = {"./constant":1576493738650,"./geo/index":1576493738647,"./serverDate/index":1576493738652}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738652, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const symbol_1 = require("../helper/symbol");
@@ -379,8 +379,8 @@ function ServerDateConstructor(opt) {
 }
 exports.ServerDateConstructor = ServerDateConstructor;
 
-}, function(modId) { var map = {"../helper/symbol":1576067120020}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120020, function(require, module, exports) {
+}, function(modId) { var map = {"../helper/symbol":1576493738653}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738653, function(require, module, exports) {
 
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
@@ -401,8 +401,8 @@ exports.SYMBOL_GEO_MULTI_POLYGON = symbol_1.default.for('SYMBOL_GEO_MULTI_POLYGO
 exports.SYMBOL_SERVER_DATE = symbol_1.default.for('SERVER_DATE');
 exports.SYMBOL_REGEXP = symbol_1.default.for('REGEXP');
 
-}, function(modId) { var map = {"../utils/symbol":1576067120021}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120021, function(require, module, exports) {
+}, function(modId) { var map = {"../utils/symbol":1576493738654}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738654, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const _symbols = [];
@@ -444,7 +444,7 @@ exports.InternalSymbol = InternalSymbol;
 exports.default = InternalSymbol;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120022, function(require, module, exports) {
+__DEFINE__(1576493738655, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const symbol_1 = require("./symbol");
@@ -468,8 +468,8 @@ exports.isPlainObject = (obj) => {
     return Object.getPrototypeOf(obj) === proto;
 };
 
-}, function(modId) { var map = {"./symbol":1576067120021}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120023, function(require, module, exports) {
+}, function(modId) { var map = {"./symbol":1576493738654}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738656, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const symbol_1 = require("../helper/symbol");
@@ -528,8 +528,8 @@ class LineString {
 }
 exports.LineString = LineString;
 
-}, function(modId) { var map = {"../helper/symbol":1576067120020,"./point":1576067120015,"../utils/type":1576067120022}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120024, function(require, module, exports) {
+}, function(modId) { var map = {"../helper/symbol":1576493738653,"./point":1576493738648,"../utils/type":1576493738655}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738657, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const symbol_1 = require("../helper/symbol");
@@ -601,8 +601,8 @@ class Polygon {
 }
 exports.Polygon = Polygon;
 
-}, function(modId) { var map = {"../helper/symbol":1576067120020,"../utils/type":1576067120022,"./lineString":1576067120023}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120025, function(require, module, exports) {
+}, function(modId) { var map = {"../helper/symbol":1576493738653,"../utils/type":1576493738655,"./lineString":1576493738656}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738658, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const symbol_1 = require("../helper/symbol");
@@ -654,8 +654,8 @@ class MultiPoint {
 }
 exports.MultiPoint = MultiPoint;
 
-}, function(modId) { var map = {"../helper/symbol":1576067120020,"./point":1576067120015,"../utils/type":1576067120022}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120026, function(require, module, exports) {
+}, function(modId) { var map = {"../helper/symbol":1576493738653,"./point":1576493738648,"../utils/type":1576493738655}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738659, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const symbol_1 = require("../helper/symbol");
@@ -713,8 +713,8 @@ class MultiLineString {
 }
 exports.MultiLineString = MultiLineString;
 
-}, function(modId) { var map = {"../helper/symbol":1576067120020,"../utils/type":1576067120022,"./lineString":1576067120023}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120027, function(require, module, exports) {
+}, function(modId) { var map = {"../helper/symbol":1576493738653,"../utils/type":1576493738655,"./lineString":1576493738656}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738660, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const symbol_1 = require("../helper/symbol");
@@ -778,8 +778,8 @@ class MultiPolygon {
 }
 exports.MultiPolygon = MultiPolygon;
 
-}, function(modId) { var map = {"../helper/symbol":1576067120020,"../utils/type":1576067120022,"./polygon":1576067120024}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120028, function(require, module, exports) {
+}, function(modId) { var map = {"../helper/symbol":1576493738653,"../utils/type":1576493738655,"./polygon":1576493738657}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738661, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const document_1 = require("./document");
@@ -808,8 +808,8 @@ class CollectionReference extends query_1.Query {
 }
 exports.CollectionReference = CollectionReference;
 
-}, function(modId) { var map = {"./document":1576067120029,"./query":1576067120048,"./aggregate":1576067120050}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120029, function(require, module, exports) {
+}, function(modId) { var map = {"./document":1576493738662,"./query":1576493738681,"./aggregate":1576493738683}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738662, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const util_1 = require("./lib/util");
@@ -1061,8 +1061,8 @@ class DocumentReference {
 }
 exports.DocumentReference = DocumentReference;
 
-}, function(modId) { var map = {"./lib/util":1576067120030,"./index":1576067120013,"./util":1576067120018,"./serializer/update":1576067120031,"./serializer/datatype":1576067120037,"./commands/update":1576067120032,"./realtime/websocket-client":1576067120038,"./constant":1576067120017}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120030, function(require, module, exports) {
+}, function(modId) { var map = {"./lib/util":1576493738663,"./index":1576493738646,"./util":1576493738651,"./serializer/update":1576493738664,"./serializer/datatype":1576493738670,"./commands/update":1576493738665,"./realtime/websocket-client":1576493738671,"./constant":1576493738650}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738663, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createPromiseCallback = () => {
@@ -1090,7 +1090,7 @@ exports.createPromiseCallback = () => {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120031, function(require, module, exports) {
+__DEFINE__(1576493738664, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const update_1 = require("../commands/update");
@@ -1229,8 +1229,8 @@ class UpdateSerializer {
 }
 exports.UpdateSerializer = UpdateSerializer;
 
-}, function(modId) { var map = {"../commands/update":1576067120032,"../helper/symbol":1576067120020,"../utils/type":1576067120022,"../operator-map":1576067120033,"./common":1576067120036}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120032, function(require, module, exports) {
+}, function(modId) { var map = {"../commands/update":1576493738665,"../helper/symbol":1576493738653,"../utils/type":1576493738655,"../operator-map":1576493738666,"./common":1576493738669}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738665, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const symbol_1 = require("../helper/symbol");
@@ -1281,8 +1281,8 @@ function isKnownUpdateCommand(object) {
 exports.isKnownUpdateCommand = isKnownUpdateCommand;
 exports.default = UpdateCommand;
 
-}, function(modId) { var map = {"../helper/symbol":1576067120020}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120033, function(require, module, exports) {
+}, function(modId) { var map = {"../helper/symbol":1576493738653}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738666, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const query_1 = require("./commands/query");
@@ -1307,8 +1307,8 @@ function operatorToString(operator) {
 }
 exports.operatorToString = operatorToString;
 
-}, function(modId) { var map = {"./commands/query":1576067120034,"./commands/logic":1576067120035,"./commands/update":1576067120032}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120034, function(require, module, exports) {
+}, function(modId) { var map = {"./commands/query":1576493738667,"./commands/logic":1576493738668,"./commands/update":1576493738665}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738667, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const logic_1 = require("./logic");
@@ -1450,8 +1450,8 @@ function isComparisonCommand(object) {
 exports.isComparisonCommand = isComparisonCommand;
 exports.default = QueryCommand;
 
-}, function(modId) { var map = {"./logic":1576067120035,"../helper/symbol":1576067120020,"../geo/index":1576067120014,"../utils/type":1576067120022}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120035, function(require, module, exports) {
+}, function(modId) { var map = {"./logic":1576493738668,"../helper/symbol":1576493738653,"../geo/index":1576493738647,"../utils/type":1576493738655}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738668, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const symbol_1 = require("../helper/symbol");
@@ -1532,8 +1532,8 @@ function isKnownLogicCommand(object) {
 exports.isKnownLogicCommand = isKnownLogicCommand;
 exports.default = LogicCommand;
 
-}, function(modId) { var map = {"../helper/symbol":1576067120020,"./query":1576067120034}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120036, function(require, module, exports) {
+}, function(modId) { var map = {"../helper/symbol":1576493738653,"./query":1576493738667}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738669, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const type_1 = require("../utils/type");
@@ -1627,8 +1627,8 @@ function decodeInternalDataType(object) {
 }
 exports.decodeInternalDataType = decodeInternalDataType;
 
-}, function(modId) { var map = {"../utils/type":1576067120022,"./datatype":1576067120037}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120037, function(require, module, exports) {
+}, function(modId) { var map = {"../utils/type":1576493738655,"./datatype":1576493738670}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738670, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const symbol_1 = require("../helper/symbol");
@@ -1727,8 +1727,8 @@ function deserialize(object) {
 }
 exports.deserialize = deserialize;
 
-}, function(modId) { var map = {"../helper/symbol":1576067120020,"../utils/type":1576067120022,"../geo/index":1576067120014,"../serverDate/index":1576067120019}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120038, function(require, module, exports) {
+}, function(modId) { var map = {"../helper/symbol":1576493738653,"../utils/type":1576493738655,"../geo/index":1576493738647,"../serverDate/index":1576493738652}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738671, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const virtual_websocket_client_1 = require("./virtual-websocket-client");
@@ -1774,24 +1774,18 @@ class RealtimeWebSocketClient {
             if (this._wsInitPromise) {
                 return this._wsInitPromise;
             }
-            console.log(`[realtime] initWebSocketConnection reconnect ${reconnect} availableRetries ${availableRetries}`);
             if (reconnect) {
                 this.pauseClients();
             }
             this.close(ws_event_1.CLOSE_EVENT_CODE.ReconnectWebSocket);
             this._wsInitPromise = new Promise(async (resolve, reject) => {
                 try {
-                    console.log('[realtime] initWebSocketConnection start throwErrorIfNetworkOffline');
-                    console.log('[realtime] initWebSocketConnection start getSignature');
                     await this.getAccessToken();
-                    console.log('[realtime] initWebSocketConnection getSignature success');
-                    console.log('[realtime] initWebSocketConnection start connectSocket');
                     await new Promise(success => {
                         const url = 'wss://tcb-ws.tencentcloudapi.com';
                         this._ws = __1.Db.wsClass ? new __1.Db.wsClass(url) : new WebSocket(url);
                         success();
                     });
-                    console.log('[realtime] initWebSocketConnection connectSocket successfully fired');
                     await this.initWebSocketEvent();
                     resolve();
                     if (reconnect) {
@@ -1803,11 +1797,8 @@ class RealtimeWebSocketClient {
                     console.error('[realtime] initWebSocketConnection connect fail', e);
                     if (availableRetries > 0) {
                         const isConnected = true;
-                        console.log('[realtime] initWebSocketConnection waiting for network online');
-                        console.log('[realtime] initWebSocketConnection network online');
                         this._wsInitPromise = undefined;
                         if (isConnected) {
-                            console.log(`[realtime] initWebSocketConnection sleep ${this._reconnectInterval}ms`);
                             await utils_1.sleep(this._reconnectInterval);
                             if (reconnect) {
                                 this._reconnectState = false;
@@ -1826,10 +1817,8 @@ class RealtimeWebSocketClient {
                     }
                 }
             });
-            let success = false;
             try {
                 await this._wsInitPromise;
-                success = true;
                 this._wsReadySubsribers.forEach(({ resolve }) => resolve());
             }
             catch (e) {
@@ -1839,7 +1828,6 @@ class RealtimeWebSocketClient {
                 this._wsInitPromise = undefined;
                 this._wsReadySubsribers = [];
             }
-            console.log(`[realtime] initWebSocketConnection ${success ? 'success' : 'fail'}`);
         };
         this.initWebSocketEvent = () => new Promise((resolve, reject) => {
             if (!this._ws) {
@@ -1913,7 +1901,6 @@ class RealtimeWebSocketClient {
                 catch (e) {
                     throw new Error(`[realtime] onMessage parse res.data error: ${e}`);
                 }
-                console.log(`[realtime] onMessage ${msg.msgType} (${new Date().toLocaleString()})`, msg);
                 if (msg.msgType === 'ERROR') {
                     let virtualWatch = null;
                     this._virtualWSClient.forEach(item => {
@@ -1976,8 +1963,7 @@ class RealtimeWebSocketClient {
                             break;
                         }
                         default: {
-                            for (const [watchId, client] of this._watchIdClientMap) {
-                                console.log('watchid*****', watchId);
+                            for (const [, client] of this._watchIdClientMap) {
                                 client.onMessage(msg);
                                 break;
                             }
@@ -2010,7 +1996,6 @@ class RealtimeWebSocketClient {
                     const loginInfo = this._logins.get(envId);
                     if (loginInfo) {
                         if (loginInfo.loggedIn && loginInfo.loginResult) {
-                            console.log('[realtime] login: already logged in');
                             return loginInfo.loginResult;
                         }
                         else if (loginInfo.loggingInPromise) {
@@ -2025,7 +2010,6 @@ class RealtimeWebSocketClient {
                     }
                 }
             }
-            console.log('[realtime] login: logging in');
             const promise = new Promise(async (resolve, reject) => {
                 try {
                     const accessTokenRes = await this.getAccessToken();
@@ -2131,7 +2115,6 @@ class RealtimeWebSocketClient {
             await this.send({
                 msg
             });
-            console.log('ping sent');
         };
         this.send = (opts) => new Promise(async (_resolve, _reject) => {
             let timeoutId;
@@ -2176,7 +2159,6 @@ class RealtimeWebSocketClient {
                         skipOnMessage: opts.skipOnMessage
                     });
                 }
-                console.log('send msg:', opts.msg);
                 try {
                     this._ws.send(JSON.stringify(opts.msg));
                     if (!opts.waitResponse) {
@@ -2286,8 +2268,8 @@ class RealtimeWebSocketClient {
 }
 exports.RealtimeWebSocketClient = RealtimeWebSocketClient;
 
-}, function(modId) { var map = {"./virtual-websocket-client":1576067120039,"../utils/utils":1576067120043,"./message":1576067120040,"./ws-event":1576067120047,"../utils/error":1576067120041,"./error":1576067120046,"../config/error.config":1576067120042,"../":1576067120013}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120039, function(require, module, exports) {
+}, function(modId) { var map = {"./virtual-websocket-client":1576493738672,"../utils/utils":1576493738676,"./message":1576493738673,"./ws-event":1576493738680,"../utils/error":1576493738674,"./error":1576493738679,"../config/error.config":1576493738675,"../":1576493738646}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738672, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const lodash_set_1 = require("lodash.set");
@@ -2993,8 +2975,8 @@ function getPublicEvent(event) {
     return e;
 }
 
-}, function(modId) { var map = {"./message":1576067120040,"../utils/error":1576067120041,"../config/error.config":1576067120042,"../utils/utils":1576067120043,"./listener":1576067120044,"./snapshot":1576067120045,"./error":1576067120046}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120040, function(require, module, exports) {
+}, function(modId) { var map = {"./message":1576493738673,"../utils/error":1576493738674,"../config/error.config":1576493738675,"../utils/utils":1576493738676,"./listener":1576493738677,"./snapshot":1576493738678,"./error":1576493738679}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738673, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 function genRequestId(prefix = '') {
@@ -3007,7 +2989,7 @@ function isInitEventMessage(msg) {
 exports.isInitEventMessage = isInitEventMessage;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120041, function(require, module, exports) {
+__DEFINE__(1576493738674, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const type_1 = require("./type");
@@ -3064,8 +3046,8 @@ class CancelledError extends Error {
 exports.CancelledError = CancelledError;
 exports.isCancelledError = (e) => e.type === 'cancelled';
 
-}, function(modId) { var map = {"./type":1576067120022,"../config/error.config":1576067120042}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120042, function(require, module, exports) {
+}, function(modId) { var map = {"./type":1576493738655,"../config/error.config":1576493738675}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738675, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ERR_CODE = {
@@ -3083,7 +3065,7 @@ exports.ERR_CODE = {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120043, function(require, module, exports) {
+__DEFINE__(1576493738676, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sleep = (ms = 0) => new Promise(r => setTimeout(r, ms));
@@ -3096,7 +3078,7 @@ exports.autoCount = (domain = 'any') => {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120044, function(require, module, exports) {
+__DEFINE__(1576493738677, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 class RealtimeListener {
@@ -3116,7 +3098,7 @@ class RealtimeListener {
 exports.RealtimeListener = RealtimeListener;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120045, function(require, module, exports) {
+__DEFINE__(1576493738678, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 class Snapshot {
@@ -3161,7 +3143,7 @@ class Snapshot {
 exports.Snapshot = Snapshot;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120046, function(require, module, exports) {
+__DEFINE__(1576493738679, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 class RealtimeErrorMessageError extends Error {
@@ -3175,7 +3157,7 @@ exports.RealtimeErrorMessageError = RealtimeErrorMessageError;
 exports.isRealtimeErrorMessageError = (e) => e && e.isRealtimeErrorMessageError;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120047, function(require, module, exports) {
+__DEFINE__(1576493738680, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const error_1 = require("../utils/error");
@@ -3316,8 +3298,8 @@ exports.getWSCloseError = (code, reason) => {
     });
 };
 
-}, function(modId) { var map = {"../utils/error":1576067120041,"../config/error.config":1576067120042}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120048, function(require, module, exports) {
+}, function(modId) { var map = {"../utils/error":1576493738674,"../config/error.config":1576493738675}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738681, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const util_1 = require("./lib/util");
@@ -3550,8 +3532,8 @@ class Query {
 }
 exports.Query = Query;
 
-}, function(modId) { var map = {"./lib/util":1576067120030,"./constant":1576067120017,"./index":1576067120013,"./validate":1576067120016,"./util":1576067120018,"./serializer/query":1576067120049,"./serializer/update":1576067120031,"./realtime/websocket-client":1576067120038}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120049, function(require, module, exports) {
+}, function(modId) { var map = {"./lib/util":1576493738663,"./constant":1576493738650,"./index":1576493738646,"./validate":1576493738649,"./util":1576493738651,"./serializer/query":1576493738682,"./serializer/update":1576493738664,"./realtime/websocket-client":1576493738671}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738682, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const query_1 = require("../commands/query");
@@ -3773,8 +3755,8 @@ class QueryEncoder {
     }
 }
 
-}, function(modId) { var map = {"../commands/query":1576067120034,"../commands/logic":1576067120035,"../helper/symbol":1576067120020,"../utils/type":1576067120022,"../operator-map":1576067120033,"./common":1576067120036}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120050, function(require, module, exports) {
+}, function(modId) { var map = {"../commands/query":1576493738667,"../commands/logic":1576493738668,"../helper/symbol":1576493738653,"../utils/type":1576493738655,"../operator-map":1576493738666,"./common":1576493738669}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738683, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const index_1 = require("./index");
@@ -3873,8 +3855,8 @@ class Aggregation {
 }
 exports.default = Aggregation;
 
-}, function(modId) { var map = {"./index":1576067120013,"./serializer/query":1576067120049}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120051, function(require, module, exports) {
+}, function(modId) { var map = {"./index":1576493738646,"./serializer/query":1576493738682}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738684, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const query_1 = require("./commands/query");
@@ -4148,8 +4130,8 @@ class ProjectionOperator {
 }
 exports.default = exports.Command;
 
-}, function(modId) { var map = {"./commands/query":1576067120034,"./commands/logic":1576067120035,"./commands/update":1576067120032,"./utils/type":1576067120022,"./aggregate":1576067120050}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120052, function(require, module, exports) {
+}, function(modId) { var map = {"./commands/query":1576493738667,"./commands/logic":1576493738668,"./commands/update":1576493738665,"./utils/type":1576493738655,"./aggregate":1576493738683}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738685, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const symbol_1 = require("../helper/symbol");
@@ -4177,27 +4159,15 @@ function RegExpConstructor(param) {
 }
 exports.RegExpConstructor = RegExpConstructor;
 
-}, function(modId) { var map = {"../helper/symbol":1576067120020}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120053, function(require, module, exports) {
+}, function(modId) { var map = {"../helper/symbol":1576493738653}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738686, function(require, module, exports) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const bson_1 = require("bson");
-const index_1 = require("./index");
-class DocumentSnapshot {
-    constructor(data, requestId) {
-        this._data = data;
-        this.requestId = requestId;
-    }
-    data() {
-        return this._data;
-    }
-}
+const index_1 = require("../index");
+const collection_1 = require("./collection");
 const START = 'database.startTransaction';
 const COMMIT = 'database.commitTransaction';
 const ABORT = 'database.abortTransaction';
-const GET_DOC = 'database.getInTransaction';
-const UPDATE_DOC = 'database.updateDocInTransaction';
-const DELETE_DOC = 'database.deleteDocInTransaction';
 class Transaction {
     constructor(db) {
         this._db = db;
@@ -4210,66 +4180,17 @@ class Transaction {
         }
         this._id = res.transactionId;
     }
-    async get(documentRef) {
-        const param = {
-            collectionName: documentRef._coll,
-            transactionId: this._id,
-            query: {
-                _id: { $eq: documentRef.id }
-            }
-        };
-        const res = await this._request.send(GET_DOC, param);
-        if (res.code)
-            throw res;
-        return new DocumentSnapshot(bson_1.EJSON.parse(res.data), res.requestId);
+    collection(collName) {
+        if (!collName) {
+            throw new Error('Collection name is required');
+        }
+        return new collection_1.CollectionReference(this, collName);
     }
-    async set(documentRef, data) {
-        const param = {
-            collectionName: documentRef._coll,
-            transactionId: this._id,
-            query: {
-                _id: { $eq: documentRef.id }
-            },
-            data: bson_1.EJSON.stringify(data, { relaxed: false }),
-            upsert: true
-        };
-        const res = await this._request.send(UPDATE_DOC, param);
-        if (res.code)
-            throw res;
-        return Object.assign(Object.assign({}, res), { updated: bson_1.EJSON.parse(res.updated), upserted: res.upserted
-                ? JSON.parse(res.upserted)
-                : null });
+    getTransactionId() {
+        return this._id;
     }
-    async update(documentRef, data) {
-        const param = {
-            collectionName: documentRef._coll,
-            transactionId: this._id,
-            query: {
-                _id: { $eq: documentRef.id }
-            },
-            data: bson_1.EJSON.stringify({
-                $set: data
-            }, {
-                relaxed: false
-            })
-        };
-        const res = await this._request.send(UPDATE_DOC, param);
-        if (res.code)
-            throw res;
-        return Object.assign(Object.assign({}, res), { updated: bson_1.EJSON.parse(res.updated) });
-    }
-    async delete(documentRef) {
-        const param = {
-            collectionName: documentRef._coll,
-            transactionId: this._id,
-            query: {
-                _id: { $eq: documentRef.id }
-            }
-        };
-        const res = await this._request.send(DELETE_DOC, param);
-        if (res.code)
-            throw res;
-        return Object.assign(Object.assign({}, res), { deleted: bson_1.EJSON.parse(res.deleted) });
+    getRequestMethod() {
+        return this._request;
     }
     async commit() {
         const param = {
@@ -4314,7 +4235,188 @@ async function runTransaction(callback, times = 3) {
 }
 exports.runTransaction = runTransaction;
 
-}, function(modId) { var map = {"./index":1576067120013}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1576067120013);
+}, function(modId) { var map = {"../index":1576493738646,"./collection":1576493738687}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738687, function(require, module, exports) {
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const document_1 = require("./document");
+const query_1 = require("./query");
+class CollectionReference extends query_1.Query {
+    constructor(transaction, coll) {
+        super(transaction, coll);
+    }
+    get name() {
+        return this._coll;
+    }
+    doc(docID) {
+        if (typeof docID !== 'string' && typeof docID !== 'number') {
+            throw new Error('docId必须为字符串或数字');
+        }
+        return new document_1.DocumentReference(this._transaction, this._coll, docID);
+    }
+    add(data) {
+        let docID;
+        if (data._id !== undefined) {
+            docID = data._id;
+        }
+        let docRef = new document_1.DocumentReference(this._transaction, this._coll, docID);
+        return docRef.create(data);
+    }
+}
+exports.CollectionReference = CollectionReference;
+
+}, function(modId) { var map = {"./document":1576493738688,"./query":1576493738690}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738688, function(require, module, exports) {
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const bson_1 = require("bson");
+const code_1 = require("../const/code");
+const GET_DOC = 'database.getInTransaction';
+const UPDATE_DOC = 'database.updateDocInTransaction';
+const DELETE_DOC = 'database.deleteDocInTransaction';
+const INSERT_DOC = 'database.insertDocInTransaction';
+class DocumentReference {
+    constructor(transaction, coll, docID) {
+        this._coll = coll;
+        this.id = docID;
+        this._transaction = transaction;
+        this._request = this._transaction.getRequestMethod();
+        this._transactionId = this._transaction.getTransactionId();
+    }
+    async create(data) {
+        let params = {
+            collectionName: this._coll,
+            transactionId: this._transactionId,
+            data: bson_1.EJSON.stringify(data, { relaxed: false })
+        };
+        if (this.id) {
+            params['_id'] = this.id;
+        }
+        const res = await this._request.send(INSERT_DOC, params);
+        if (res.code) {
+            throw res;
+        }
+        const inserted = bson_1.EJSON.parse(res.inserted);
+        const ok = bson_1.EJSON.parse(res.ok);
+        if (ok == 1 && inserted == 1) {
+            return Object.assign(Object.assign({}, res), { ok,
+                inserted });
+        }
+        else {
+            throw new Error(code_1.ERRORS.INSERT_DOC_FAIL.message);
+        }
+    }
+    async get() {
+        const param = {
+            collectionName: this._coll,
+            transactionId: this._transactionId,
+            query: {
+                _id: { $eq: this.id }
+            }
+        };
+        const res = await this._request.send(GET_DOC, param);
+        if (res.code)
+            throw res;
+        return {
+            data: bson_1.EJSON.parse(res.data),
+            requestId: res.requestId
+        };
+    }
+    async set(data) {
+        const param = {
+            collectionName: this._coll,
+            transactionId: this._transactionId,
+            query: {
+                _id: { $eq: this.id }
+            },
+            data: bson_1.EJSON.stringify(data, { relaxed: false }),
+            upsert: true
+        };
+        const res = await this._request.send(UPDATE_DOC, param);
+        if (res.code)
+            throw res;
+        return Object.assign(Object.assign({}, res), { updated: bson_1.EJSON.parse(res.updated), upserted: res.upserted
+                ? JSON.parse(res.upserted)
+                : null });
+    }
+    async update(data) {
+        const param = {
+            collectionName: this._coll,
+            transactionId: this._transactionId,
+            query: {
+                _id: { $eq: this.id }
+            },
+            data: bson_1.EJSON.stringify({
+                $set: data
+            }, {
+                relaxed: false
+            })
+        };
+        const res = await this._request.send(UPDATE_DOC, param);
+        if (res.code)
+            throw res;
+        return Object.assign(Object.assign({}, res), { updated: bson_1.EJSON.parse(res.updated) });
+    }
+    async delete() {
+        const param = {
+            collectionName: this._coll,
+            transactionId: this._transactionId,
+            query: {
+                _id: { $eq: this.id }
+            }
+        };
+        const res = await this._request.send(DELETE_DOC, param);
+        if (res.code)
+            throw res;
+        return Object.assign(Object.assign({}, res), { deleted: bson_1.EJSON.parse(res.deleted) });
+    }
+}
+exports.DocumentReference = DocumentReference;
+
+}, function(modId) { var map = {"../const/code":1576493738689}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738689, function(require, module, exports) {
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ERRORS = {
+    CREATE_WATCH_NET_ERROR: {
+        code: 'CREATE_WATCH_NET_ERROR',
+        message: 'create watch network error'
+    },
+    CREATE_WACTH_EXCEED_ERROR: {
+        code: 'CREATE_WACTH_EXCEED_ERROR',
+        message: 'maximum connections exceed'
+    },
+    CREATE_WATCH_SERVER_ERROR: {
+        code: 'CREATE_WATCH_SERVER_ERROR',
+        message: 'create watch server error'
+    },
+    CONN_ERROR: {
+        code: 'CONN_ERROR',
+        message: 'connection error'
+    },
+    INVALID_PARAM: {
+        code: 'INVALID_PARAM',
+        message: 'Invalid request param'
+    },
+    INSERT_DOC_FAIL: {
+        code: 'INSERT_DOC_FAIL',
+        message: 'insert document failed'
+    }
+};
+
+}, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493738690, function(require, module, exports) {
+
+Object.defineProperty(exports, "__esModule", { value: true });
+class Query {
+    constructor(transaction, coll) {
+        this._coll = coll;
+        this._transaction = transaction;
+    }
+}
+exports.Query = Query;
+
+}, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
+return __REQUIRE__(1576493738646);
 })()
 //# sourceMappingURL=index.js.map

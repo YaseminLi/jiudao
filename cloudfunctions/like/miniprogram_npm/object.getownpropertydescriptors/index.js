@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {} }; __MODS__[
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = { exports: {} }; __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); if(typeof m.exports === "object") { __MODS__[modId].m.exports.__proto__ = m.exports.__proto__; Object.keys(m.exports).forEach(function(k) { __MODS__[modId].m.exports[k] = m.exports[k]; var desp = Object.getOwnPropertyDescriptor(m.exports, k); if(desp && desp.configurable) Object.defineProperty(m.exports, k, { set: function(val) { __MODS__[modId].m.exports[k] = val; }, get: function() { return __MODS__[modId].m.exports[k]; } }); }); if(m.exports.__esModule) Object.defineProperty(__MODS__[modId].m.exports, "__esModule", { value: true }); } else { __MODS__[modId].m.exports = m.exports; } } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1576067120734, function(require, module, exports) {
+__DEFINE__(1576493740611, function(require, module, exports) {
 
 
 var define = require('define-properties');
@@ -21,55 +21,49 @@ define(implementation, {
 
 module.exports = implementation;
 
-}, function(modId) {var map = {"./implementation":1576067120735,"./polyfill":1576067120736,"./shim":1576067120737}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120735, function(require, module, exports) {
+}, function(modId) {var map = {"./implementation":1576493740612,"./polyfill":1576493740613,"./shim":1576493740614}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493740612, function(require, module, exports) {
 
 
-var ES = require('es-abstract/es7');
+var CreateDataProperty = require('es-abstract/2019/CreateDataProperty');
+var IsCallable = require('es-abstract/2019/IsCallable');
+var RequireObjectCoercible = require('es-abstract/2019/RequireObjectCoercible');
+var ToObject = require('es-abstract/2019/ToObject');
+var callBound = require('es-abstract/helpers/callBound');
 
-var defineProperty = Object.defineProperty;
-var getDescriptor = Object.getOwnPropertyDescriptor;
-var getOwnNames = Object.getOwnPropertyNames;
-var getSymbols = Object.getOwnPropertySymbols;
-var concat = Function.call.bind(Array.prototype.concat);
-var reduce = Function.call.bind(Array.prototype.reduce);
-var getAll = getSymbols ? function (obj) {
-	return concat(getOwnNames(obj), getSymbols(obj));
-} : getOwnNames;
+var $gOPD = Object.getOwnPropertyDescriptor;
+var $getOwnNames = Object.getOwnPropertyNames;
+var $getSymbols = Object.getOwnPropertySymbols;
+var $concat = callBound('Array.prototype.concat');
+var $reduce = callBound('Array.prototype.reduce');
+var getAll = $getSymbols ? function (obj) {
+	return $concat($getOwnNames(obj), $getSymbols(obj));
+} : $getOwnNames;
 
-var isES5 = ES.IsCallable(getDescriptor) && ES.IsCallable(getOwnNames);
-
-var safePut = function put(obj, prop, val) { // eslint-disable-line max-params
-	if (defineProperty && prop in obj) {
-		defineProperty(obj, prop, {
-			configurable: true,
-			enumerable: true,
-			value: val,
-			writable: true
-		});
-	} else {
-		obj[prop] = val;
-	}
-};
+var isES5 = IsCallable($gOPD) && IsCallable($getOwnNames);
 
 module.exports = function getOwnPropertyDescriptors(value) {
-	ES.RequireObjectCoercible(value);
+	RequireObjectCoercible(value);
 	if (!isES5) {
 		throw new TypeError('getOwnPropertyDescriptors requires Object.getOwnPropertyDescriptor');
 	}
 
-	var O = ES.ToObject(value);
-	return reduce(getAll(O), function (acc, key) {
-		var descriptor = getDescriptor(O, key);
-		if (typeof descriptor !== 'undefined') {
-			safePut(acc, key, descriptor);
-		}
-		return acc;
-	}, {});
+	var O = ToObject(value);
+	return $reduce(
+		getAll(O),
+		function (acc, key) {
+			var descriptor = $gOPD(O, key);
+			if (typeof descriptor !== 'undefined') {
+				CreateDataProperty(acc, key, descriptor);
+			}
+			return acc;
+		},
+		{}
+	);
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120736, function(require, module, exports) {
+__DEFINE__(1576493740613, function(require, module, exports) {
 
 
 var implementation = require('./implementation');
@@ -78,8 +72,8 @@ module.exports = function getPolyfill() {
 	return typeof Object.getOwnPropertyDescriptors === 'function' ? Object.getOwnPropertyDescriptors : implementation;
 };
 
-}, function(modId) { var map = {"./implementation":1576067120735}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120737, function(require, module, exports) {
+}, function(modId) { var map = {"./implementation":1576493740612}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493740614, function(require, module, exports) {
 
 
 var getPolyfill = require('./polyfill');
@@ -95,7 +89,7 @@ module.exports = function shimGetOwnPropertyDescriptors() {
 	return polyfill;
 };
 
-}, function(modId) { var map = {"./polyfill":1576067120736}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1576067120734);
+}, function(modId) { var map = {"./polyfill":1576493740613}; return __REQUIRE__(map[modId], modId); })
+return __REQUIRE__(1576493740611);
 })()
 //# sourceMappingURL=index.js.map

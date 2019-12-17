@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {} }; __MODS__[
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = { exports: {} }; __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); if(typeof m.exports === "object") { __MODS__[modId].m.exports.__proto__ = m.exports.__proto__; Object.keys(m.exports).forEach(function(k) { __MODS__[modId].m.exports[k] = m.exports[k]; var desp = Object.getOwnPropertyDescriptor(m.exports, k); if(desp && desp.configurable) Object.defineProperty(m.exports, k, { set: function(val) { __MODS__[modId].m.exports[k] = val; }, get: function() { return __MODS__[modId].m.exports[k]; } }); }); if(m.exports.__esModule) Object.defineProperty(__MODS__[modId].m.exports, "__esModule", { value: true }); } else { __MODS__[modId].m.exports = m.exports; } } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1576067120419, function(require, module, exports) {
+__DEFINE__(1576493739674, function(require, module, exports) {
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -6696,7 +6696,7 @@ exports.translateEnv = function (env) {
         return undefined;
     }
     if (env === symbol_config_1.SYMBOL_DYNAMIC_CURRENT_ENV) {
-        env = process.env.TCB_ENV;
+        env = process.env.TCB_ENV || process.env.SCF_NAMESPACE;
     }
     // in scf local debug, we should not use 'local' as env in api invocation
     if (env === 'local' && process.env.TENCENTCLOUD_RUNENV === 'WX_LOCAL_SCF') {
@@ -6776,13 +6776,13 @@ module.exports = require("tslib");
 /***/ })
 
 /******/ });
-}, function(modId) {var map = {"./package.json":1576067120420}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1576067120420, function(require, module, exports) {
+}, function(modId) {var map = {"./package.json":1576493739675}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1576493739675, function(require, module, exports) {
 module.exports = {
   "_from": "wx-server-sdk@latest",
-  "_id": "wx-server-sdk@1.5.5",
+  "_id": "wx-server-sdk@1.6.0",
   "_inBundle": false,
-  "_integrity": "sha1-19kzR2JWOp/azuyDoamnNo4e13U=",
+  "_integrity": "sha1-pHNjWqafkuVmL3/Q1bEk9wuH4mI=",
   "_location": "/wx-server-sdk",
   "_phantomChildren": {},
   "_requested": {
@@ -6798,8 +6798,8 @@ module.exports = {
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npm.taobao.org/wx-server-sdk/download/wx-server-sdk-1.5.5.tgz",
-  "_shasum": "d7d9334762563a9fdaceec83a1a9a7368e1ed775",
+  "_resolved": "https://registry.npm.taobao.org/wx-server-sdk/download/wx-server-sdk-1.6.0.tgz?cache=0&sync_timestamp=1576133808842&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fwx-server-sdk%2Fdownload%2Fwx-server-sdk-1.6.0.tgz",
+  "_shasum": "a473635aa69f92e5662f7fd0d5b124f70b87e262",
   "_spec": "wx-server-sdk@latest",
   "_where": "/Users/xiaoming/WeChatProjects/jiuda-db/cloudfunctions/bookLike",
   "author": {
@@ -6808,7 +6808,7 @@ module.exports = {
   "bundleDependencies": false,
   "dependencies": {
     "protobufjs": "6.8.8",
-    "tcb-admin-node": "1.16.3",
+    "tcb-admin-node": "1.18.0",
     "tslib": "^1.9.3"
   },
   "deprecated": false,
@@ -6816,10 +6816,10 @@ module.exports = {
   "license": "MIT",
   "main": "index.js",
   "name": "wx-server-sdk",
-  "version": "1.5.5"
+  "version": "1.6.0"
 }
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1576067120419);
+return __REQUIRE__(1576493739674);
 })()
 //# sourceMappingURL=index.js.map
