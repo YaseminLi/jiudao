@@ -6,7 +6,8 @@ Page({
   data: {
     classic: '',
     likeStatus: false,
-    likeCount: ''
+    likeCount: '',
+    showPage:false
   },
   onLoad: function (options) {
     let index = options.id;
@@ -34,6 +35,11 @@ Page({
     console.log('share')
     wx.showShareMenu({
       withShareTicket: true
+    })
+  },
+  onImageLoad:function(){
+    this.setData({
+      showPage:true
     })
   }
 })

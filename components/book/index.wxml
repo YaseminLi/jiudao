@@ -1,5 +1,5 @@
 <view class='book-container'>
-  <image src='{{book.image}}' />
+  <image src='{{book.image}}' lazy-load="true"/>
   <view class='description'>
     <text class='title'>{{book.title}}</text>
     <text class='author'>{{book.author}}</text>

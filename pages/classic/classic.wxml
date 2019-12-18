@@ -1,16 +1,19 @@
-<view class='class-container' wx:if="{{showPage}}">
+<view class='class-container' hidden="{{!showPage}}">
   <view class='header'>
     <v-epsiode index="{{classic.index}}" pubdate="{{classic.pubdate}}" class="epsiode" />
     <view class='button'>
       <v-like isLike="{{likeStatus}}" likeCount="{{likeCount}}" bind:like="onLike" class="like" />
-      <image class="share" src='/images/icon/fenxiang.png' bind:tap='onShare'/>
+      <button class='share' id="shareBtn" open-type="share" type="default" >
+        <image class="share" src='/images/icon/fenxiang.png'/>
+      </button>
+      <!-- <image class="share" src='/images/icon/fenxiang.png' bind:tap='onShare' /> -->
     </view>
 
   </view>
 
-  <v-classic wx:if="{{classic.type==100}}" content="{{classic.content}}" image="{{classic.image}}" />
+  <v-classic wx:if="{{classic.type==100}}" content="{{classic.content}}" image="{{classic.image}}" bind:imageLoad="onImageLoad"/>
 
-  <v-music wx:if="{{classic.type==200}}" content="{{classic.content}}" src="{{classic.url}}" imageUrl="{{classic.image}}" title="{{classic.title}}" image="{{classic.image}}" index="{{classic.id}}" />
-  <v-essay wx:if="{{classic.type==300}}" content="{{classic.content}}" image="{{classic.image}}" />
+  <v-music wx:if="{{classic.type==200}}" content="{{classic.content}}" src="{{classic.url}}" imageUrl="{{classic.image}}" title="{{classic.title}}" image="{{classic.image}}" index="{{classic.id}}" bind:imageLoad="onImageLoad"/>
+  <v-essay wx:if="{{classic.type==300}}" content="{{classic.content}}" image="{{classic.image}}" bind:imageLoad="onImageLoad"/>
   <v-navi title="{{classic.title}}" first="{{first}}" latest="{{latest}}" class='navi' bind:left="onNext" bind:right="onPrevious" />
 </view>

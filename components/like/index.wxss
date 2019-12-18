@@ -10,6 +10,7 @@
 .like-container text{
   font-family: "PingFangSC-Thin";
   color: #666;
-  line-height: 24rpx;
-  margin-left:10rpx
+  /* line-height: 20rpx; */
+  font-size:20rpx;
+  margin-left:5rpx
 }

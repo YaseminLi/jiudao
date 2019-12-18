@@ -52,7 +52,9 @@
   </view>
   <view class='button'>
     <v-like isLike='{{likeStatus}}' likeCount='{{likeCount}}' bind:bookLike='onBookLike'/>
-    <image src='/images/icon/fenxiang.png' />
+    <button class='share' id="shareBtn" open-type="share" type="default" >
+        <image class="share" src='/images/icon/fenxiang.png'/>
+      </button>
   </view>
 </view>
 

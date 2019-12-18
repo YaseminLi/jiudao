@@ -27,6 +27,13 @@
   width: 30rpx;
   height: 30rpx;
 } 
+button{
+  padding: 0rpx;
+  margin:0rpx;
+  border-radius: 0;
+  border:0rpx;
+  line-height: 0
+}
 .navi{
   position: absolute;
   bottom:40rpx;

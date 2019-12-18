@@ -120,7 +120,7 @@
 }
 .button{
   width: 160rpx;
-  margin-right: 30rpx;
+  margin-right: 80rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;

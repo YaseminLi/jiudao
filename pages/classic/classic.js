@@ -13,6 +13,9 @@ Page({
   },
   onLoad: function(options) {
     let index = this.data.classic.index;
+    wx.showLoading({
+      title: '加载中',
+    })
     classicModel.getLatest(index, (data) => {
       this.setData({
         classic: data,
@@ -20,9 +23,6 @@ Page({
         likeCount: data.fav_nums
       });
       this._getLikeStatus(data.index, data.type)
-      this.setData({
-        showPage:true
-      })
     });
   },
   onLike: function(event) {
@@ -36,8 +36,17 @@ Page({
   },
   onNext: function(event) {
     this._updateClassic("next")
+    this.setData({
+      showPage: false
+    })
   },
   onPrevious: function(event) {
+    this.setData({
+      showPage: false
+    })
+    wx.showLoading({
+      title: '加载中',
+    })
     this._updateClassic("previous")
   },
   onShare:function(){
@@ -60,8 +69,7 @@ Page({
         likeStatus: data.like_status,
         likeCount: data.fav_nums,
         first: classicModel.isFirst(data.index),
-        latest: classicModel.isLatest(data.index),
-        showPage:true
+        latest: classicModel.isLatest(data.index)
       })
     });
   },
@@ -73,5 +81,17 @@ Page({
 
       })
     })
+  },
+  onImageLoad:function(){
+    this.setData({
+      showPage:true
+    })
+    wx.hideLoading()
+  },
+  onShareAppMessage:function(){
+    return {
+      title: '旧岛',
+      imageUrl: this.data.classic.image
+    }
   }
 })

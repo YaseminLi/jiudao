@@ -45,6 +45,12 @@ let behavior=event.detail.behavior
     this.setData({
       posting: !this.data.posting
     })
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '旧岛',
+      path: this.data.detail.image
+    }
   }
   // onPost: function(event) {
   //   const comment = event.detail.comment || event.detail.value;

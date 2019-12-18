@@ -10,5 +10,10 @@ module.exports = Behavior({
     hidden: {
       type: Boolean
     }
+  },
+  methods:{
+    onImageLoad() {
+      this.triggerEvent('imageLoad', {}, {})
+    }
   }
 })
