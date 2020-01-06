@@ -35,10 +35,14 @@ Page({
     });
   },
   onNext: function(event) {
-    this._updateClassic("next")
+  
     this.setData({
       showPage: false
     })
+    wx.showLoading({
+      title: '加载中',
+    })
+    this._updateClassic("next")
   },
   onPrevious: function(event) {
     this.setData({

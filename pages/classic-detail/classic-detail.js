@@ -10,6 +10,9 @@ Page({
     showPage:false
   },
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     let index = options.id;
     const eventChannel = this.getOpenerEventChannel()
     const that=this
@@ -38,8 +41,10 @@ Page({
     })
   },
   onImageLoad:function(){
+  
     this.setData({
       showPage:true
     })
+    wx.hideLoading()
   }
 })

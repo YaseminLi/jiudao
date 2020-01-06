@@ -1,6 +1,7 @@
 <wxs src="../../wxs/index.wxs" module="tools" />
-<view class='header'>
-  <image src='{{detail.image}}' />
+<view hidden='{{!showPage}}'>
+<view class='header' >
+  <image src='{{detail.image}}' bindload="onImageLoad" />
   <text class='book-name'>{{detail.title}}</text>
   <text class='author'>{{tools.author(detail.author)}}</text>
 </view>
@@ -76,6 +77,7 @@
   <input class='post'  placeholder='短评最多12个字' placeholder-class='placeholder' bindconfirm='onPost' value='{{inputValue}}'/>
 </view>
 <v-mask wx:if='{{posting}}'/>
+</view>
 <wxs module='highlight'>
   var highlight = function(index) {
     if (index == 0) {

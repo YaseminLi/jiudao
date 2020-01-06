@@ -6,12 +6,15 @@
   background: white;
 }
 
-.preview-container .image {
+.preview-container > image {
   width: 100%;
   height: 240rpx;
 }
-#music{
+.preview-container .music{
+  width: 240rpx;
   border-radius: 50%;
+  overflow: hidden;
+  margin:0 auto;
 }
 
 .preview-container .header {

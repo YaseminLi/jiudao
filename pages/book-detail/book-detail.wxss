@@ -118,6 +118,15 @@
   color: #333333;
   margin-left: 10rpx;
 }
+button{
+  padding: 0rpx;
+  margin:0rpx;
+  border-radius: 0;
+  border:0rpx;
+  line-height: 0;
+   width: 30rpx;
+  height: 30rpx;
+}
 .button{
   width: 160rpx;
   margin-right: 80rpx;
@@ -125,7 +134,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.button > image{
+.button  .share{
   height: 30rpx;
   width: 30rpx;
 }
@@ -175,3 +184,4 @@
 .placeholder{
 font-size:28rpx;
 }
+

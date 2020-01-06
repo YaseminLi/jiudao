@@ -1,12 +1,5 @@
 const db = wx.cloud.database()
 class BookModel {
-  //精选列表数据
-  // getHotList(sCallback) {
-  //   db.collection('bookList').get().then(res => {
-  //     sCallback(res.data)
-  //   })
-  // }
-  //书籍详情
   getBookDetail(sCallback) {
     // id = id - 0 //字符串类型转化为number类型
     db.collection('bookDetail').get({
@@ -29,16 +22,6 @@ class BookModel {
       }
     })
   }
-  //获取点赞情况
-  // getBookFavor(id, sCallback) {
-  //   db.collection('bookList').where({
-  //     id: id - 0
-  //   }).get().then(res => {
-  //     sCallback(res.data[0])
-  //   })
-  // }
-  //提交评论
-  //提交点赞
   bookLike(behavior, index, favNums, sCallback) {
     let newFavNums = behavior == "like" ? favNums - 1 : favNums + 1;
     let status = behavior == "like" ? 0 : 1;
