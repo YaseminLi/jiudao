@@ -53,12 +53,6 @@ Page({
     })
     this._updateClassic("previous")
   },
-  onShare:function(){
-    console.log('share')
-    wx.showShareMenu({
-      withShareTicket: true
-    })
-  },
   _updateClassic: function(nextOrPrevious) {
     let index = this.data.classic.index;
     this.setData({
@@ -94,8 +88,7 @@ Page({
   },
   onShareAppMessage:function(){
     return {
-      title: '旧岛',
-      imageUrl: this.data.classic.image
+      title: '旧岛'
     }
   }
 })

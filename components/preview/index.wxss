@@ -40,5 +40,7 @@
    height:72rpx;
    overflow: hidden;
   text-overflow: ellipsis;
-  white-space: wrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2
 }

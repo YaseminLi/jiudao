@@ -3,7 +3,6 @@ import {
 } from '../../api/book.js';
 const bookModel = new BookModel();
 let imageLoad=false
-let commentLoad=false
 Page({
   data: {
     detail: '',
@@ -33,8 +32,8 @@ Page({
       this.setData({
         comment: data,
       })
-      commentLoad=true
-      if (imageLoad &&commentLoad) {
+      if (imageLoad &&this.data.comment.length>0) {
+        console.log('comment load')
         this.setData({
           showPage:true
         })
@@ -70,7 +69,8 @@ Page({
   },
   onImageLoad:function(){
    imageLoad=true
-    if (imageLoad && commentLoad) {
+    if (imageLoad && imageLoad && this.data.comment.length > 0) {
+      console.log('image load')
       this.setData({
         showPage: true
       })

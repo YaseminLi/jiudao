@@ -63,8 +63,5 @@ Page({
       title: '没有更多数据了！',
       icon: 'none'
     })
-  },
-  onToggleLike(){
-    console.log(detail)
   }
 })

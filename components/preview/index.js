@@ -18,6 +18,8 @@ favor:Object
    * 组件的方法列表
    */
   methods: {
-
+    onImageLoad:function(){
+      this.triggerEvent('imageLoad', {}, {});
+    }
   }
 })
