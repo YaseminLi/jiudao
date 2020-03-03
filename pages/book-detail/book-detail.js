@@ -70,7 +70,6 @@ Page({
   onImageLoad:function(){
    imageLoad=true
     if (imageLoad && imageLoad && this.data.comment.length > 0) {
-      console.log('image load')
       this.setData({
         showPage: true
       })
