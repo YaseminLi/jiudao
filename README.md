@@ -1,6 +1,11 @@
 # jiudao
 组件式构建的微信小程序，包括音频播放及切换、书籍搜索、详情查看、点赞评论、收藏等功能，提取出10个可复用的组件，同时使用小程序云开发提供的API，在前端存储读取项目数据。
 
+## branch
+- master : 使用小程序的云开发能力提供前端数据
+- jiudao-mock : 使用jiudao-server分支上的express获取http请求
+- jiudao-server : 用express构建的服务器
+
 ## 通用组件
 1. 书籍组件
 2. 音乐组件
@@ -25,9 +30,9 @@
 
 
 --------------------------------
-[期刊]:/readme-img/推荐页.png 
-[书单]:/readme-img/歌手.png 
-[书籍搜索]:/readme-img/播放列表.png 
-[书籍详情]:/readme-img/播放器.png 
-[我的期刊]:/readme-img/歌单页.png 
-[我的书单]:/readme-img/搜索结果.png 
+[期刊]:/readme-img/期刊.png 
+[书单]:/readme-img/书单.png 
+[书籍搜索]:/readme-img/书籍搜索.png 
+[书籍详情]:/readme-img/书籍详情.png 
+[我的期刊]:/readme-img/我的期刊.png 
+[我的书单]:/readme-img/我的书单.png 
