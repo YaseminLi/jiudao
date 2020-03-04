@@ -1,0 +1,32 @@
+.book-like-container{
+  width: 690rpx;
+  height: 140rpx;
+  background: white;
+  border-radius: 15rpx;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.book-img{
+  width: 80rpx;
+  height: 100rpx;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  width: 480rpx;
+}
+.content .title{
+  font-size: 28rpx;
+  color: black;
+  font-weight: 800;
+}
+.content .author{
+  margin-top: 10rpx;
+  font-size: 20rpx;
+}
+.like-img{
+  width: 33rpx;
+  height: 28rpx;
+}

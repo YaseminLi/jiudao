@@ -1,0 +1,7 @@
+page{
+  background-color: #f2f2f2;
+}
+.book-item{
+  margin-top: 20rpx;
+
+}

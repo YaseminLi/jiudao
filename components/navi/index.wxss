@@ -1,0 +1,16 @@
+.navi-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 600rpx;
+  height: 80rpx;
+  border-radius: 2px;
+  background:#f7f7f7
+}
+.navi-container image{
+  height: 80rpx;
+  width: 80rpx;
+}
+.navi-container text{
+color:black
+}

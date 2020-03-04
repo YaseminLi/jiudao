@@ -1,0 +1,14 @@
+.like-container{
+  display: inline-flex;
+  width: 70rpx;
+}
+.like-container image{
+  width: 32rpx;
+  height: 28rpx;
+  margin-top: 10rpx;
+}
+.like-container text{
+  font-family: "PingFangSC-Thin";
+  color: #666;
+  line-height: 24rpx;
+}

@@ -1,0 +1,10 @@
+<view class='preview-container'>
+  <view class='header'>
+    <text class='type'>电影</text>
+    <v-like />
+  </view>
+  <image class="image"src='/images/wx.png' />
+  <text class='content'>人生不能像做菜，把所有的料准备好才下锅</text>
+</view>
+
+

@@ -1,0 +1,16 @@
+<view class='class-container'>
+  <view class='header'>
+    <v-epsiode index="{{classic.index}}" pubdate="{{classic.pubdate}}" class="epsiode" />
+    <view class='button'>
+      <v-like isLike="{{likeStatus}}" likeCount="{{likeCount}}" bind:like="onLike" class="like" />
+      <image class="share" src='/images/icon/fenxiang.png' />
+    </view>
+
+  </view>
+
+  <v-classic wx:if="{{classic.type==100}}" content="{{classic.content}}" image="{{classic.image}}" />
+
+  <v-music wx:if="{{classic.type==200}}" content="{{classic.content}}" musicUrl="{{classic.url}}" imageUrl="{{classic.image}}" title="{{classic.title}}" image="{{classic.image}}" index="{{classic.id}}" />
+  <v-essay wx:if="{{classic.type==300}}" content="{{classic.content}}" image="{{classic.image}}" />
+  <v-navi title="{{classic.title}}" first="{{first}}" latest="{{latest}}" class='navi' bind:left="onNext" bind:right="onPrevious" />
+</view>

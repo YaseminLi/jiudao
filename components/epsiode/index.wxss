@@ -1,0 +1,39 @@
+.epsiode-container{
+  height: 60rpx;
+  display: flex;
+}
+.index-container{
+  display: flex;
+  align-items: baseline;
+  width: 120rpx;
+}
+.plain{
+  font-size: 32rpx;
+  color: black;
+}
+.index{
+  line-height: 60rpx;
+  font-size:60rpx;
+  font-weight: 500;
+  margin-right: 14rpx;
+  color: black;
+}
+.line{
+  height: 44rpx;
+  margin-right: 14rpx;
+  border:1px solid black;
+}
+.date-container{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rpx;
+
+}
+.month{
+  color:black;
+  line-height: 24rpx;
+}
+.year{
+  font-size: 20rpx;
+  color: black;
+}

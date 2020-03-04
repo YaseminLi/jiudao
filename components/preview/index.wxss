@@ -1,0 +1,36 @@
+.preview-container {
+  width: 325rpx;
+  height: 470rpx;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.preview-container .image {
+  width: 100%;
+  height: 240rpx;
+}
+
+.preview-container .header {
+  height: 40rpx;
+  margin: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .type {
+  width: 70rpx;
+  background: #f1f1f1;
+  line-height: 40rpx;
+  color: black;
+  text-align: center;
+ 
+}
+
+.preview-container .content {
+  margin: 40rpx 20rpx;
+  font-size: 28rpx;
+   /* overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; */
+}

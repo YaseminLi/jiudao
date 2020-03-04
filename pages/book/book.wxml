@@ -1,0 +1,22 @@
+<!-- <view class='search'>
+  <icon type='search' size='16' />
+  <input type="text" placeholder='搜索图书名称' placeholder-class='placeholder'></input>
+</view> -->
+<!-- 不要用input ，只是展示样式，输入是在其他页面 -->
+<view wx:if="{{!showSearch}}">
+  <view class='header' bind:tap='onShowSearch'>
+    <view class='box'>
+      <icon type='search' size='16' />
+      <text class='placeholder'>搜索图书名称</text>
+    </view>
+  </view>
+  <view class='sub-container'>
+    <image class='quality' src='/images/book/quality.png' />
+    <view class='book-list'>
+      <block wx:for='{{hotList}}' wx:key='{{index}}'>
+        <v-book bind:tap='onBookDetail' data-id='{{item.id}}' book='{{item}}' />
+      </block>
+    </view>
+  </view>
+</view>
+<v-search wx:if="{{showSearch}}" bind:cancelSearch='onShowSearch' more='{{more}}'/>

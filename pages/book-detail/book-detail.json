@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "v-like":"/components/like/index",
+    "v-tag": "/components/tag/index",
+    "v-mask": "/components/mask/index"
+  },
+  "navigationBarTitleText": "旧岛",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black"
+}

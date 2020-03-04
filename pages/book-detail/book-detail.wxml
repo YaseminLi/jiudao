@@ -1,0 +1,91 @@
+<wxs src="../../wxs/index.wxs" module="tools" />
+<view class='header'>
+  <image src='{{detail.image}}' />
+  <text class='book-name'>{{detail.title}}</text>
+  <text class='author'>{{tools.author(detail.author)}}</text>
+</view>
+<view class='container'>
+  <view class='title'>短评</view>
+  <text class='shadow' wx:if='{{!comment}}'>还没有短评内容～</text>
+  <view class='comments' wx:if='{{comment}}'>
+    <block wx:for='{{tools.limit(comment,5)}}' wx:key='{{index}}'>
+      <v-tag content='{{item.content}}' tag-class='{{highlight.highlight(index)}}'>
+        <text class='count' slot='after'>+{{item.nums}}</text>
+      </v-tag>
+    </block>
+  </view>
+</view>
+<view class='container'>
+  <view class='title'>内容简介</view>
+  <text class='content' decode='true'>{{tools.content(detail.summary)}}</text>
+</view>
+
+<view class='container'>
+  <view class='title'>书本信息</view>
+  <view class='description'>
+    <view>
+      <text class='plain'>出版社</text>
+      <text class='message'>{{detail.publisher}}</text>
+    </view>
+    <view>
+      <text class='plain'>出版年</text>
+      <text class='message'>{{tools.date(detail.pubdate)}}</text>
+    </view>
+    <view>
+      <text class='plain'>页数</text>
+      <text class='message'>{{detail.pages}}</text>
+    </view>
+    <view>
+      <text class='plain'>定价</text>
+      <text class='message'>¥{{detail.price}}</text>
+    </view>
+    <view>
+      <text class='plain'>精装</text>
+      <text class='message'>{{detail.binding}}</text>
+    </view>
+  </view>
+</view>
+<view class='post-container' wx:if='{{!posting}}'>
+  <view class='post-fake' bind:tap="onFakePost">
+    <image src='/images/book/write.png' />
+    <text class='input'>留下你的短评吧～</text>
+  </view>
+  <view class='button'>
+    <v-like isLike='{{likeStatus}}' count='{{likeCount}}' />
+    <image src='/images/icon/fenxiang.png' />
+  </view>
+</view>
+
+
+<view class='posting-container' wx:if='{{posting}}'>
+
+  <view class='post-header'>
+    <text wx:if='{{comment}}'>仅可点击标签+1</text>
+    <text wx:else>暂无标签</text>
+    <text bind:tap='onFakePost'>取消</text>
+  </view>
+  <view class='comment-container' wx:if='{{comment}}'>
+    <block wx:for='{{tools.limit(comment,3)}}' wx:key='{{index}}'>
+      <v-tag  content='{{item.content}}' tag-class='{{highlight.highlight(index)}}' bind:tapping='onPost'>
+        <text class='count' slot='after'>+1</text>
+      </v-tag>
+    </block>
+  </view>
+  <input class='post' focus='true' placeholder='短评最多12个字' placeholder-class='placeholder' bindconfirm='onPost' value='{{inputValue}}'/>
+</view>
+<v-mask wx:if='{{posting}}'/>
+<wxs module='highlight'>
+  var highlight = function(index) {
+    if (index == 0) {
+      return index = 'ex-tag1'
+    }
+
+    if (index == 1) {
+      return index = 'ex-tag2'
+    }
+    return
+  }
+  module.exports = {
+    highlight: highlight
+  };
+</wxs>
