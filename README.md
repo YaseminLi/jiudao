@@ -30,9 +30,9 @@
 
 
 --------------------------------
-[期刊]:/readme-img/期刊.png 
-[书单]:/readme-img/书单.png 
-[书籍搜索]:/readme-img/书籍搜索.png 
-[书籍详情]:/readme-img/书籍详情.png 
-[我的期刊]:/readme-img/我的期刊.png 
-[我的书单]:/readme-img/我的书单.png 
+[期刊]:/readme-img/0.png 
+[书单]:/readme-img/1.png 
+[书籍搜索]:/readme-img/5.png 
+[书籍详情]:/readme-img/2.png 
+[我的期刊]:/readme-img/3.png 
+[我的书单]:/readme-img/4.png 
